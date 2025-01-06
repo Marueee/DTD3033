@@ -4,7 +4,7 @@ session_start();
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Example credentials (you can replace this with database validation)
+    // Example credentials (replace this with database validation later)
     $valid_username = "user";
     $valid_password = "password";
 
@@ -19,7 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         $error = "Invalid username or password.";
+        // Display the error and redirect back to the sign-in page
+        echo "<script>
+                alert('$error');
+                window.location.href='signin.html';
+              </script>";
+        exit();
     }
 }
 ?>
-
