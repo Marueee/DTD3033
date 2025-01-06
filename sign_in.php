@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Display the error and redirect back to the sign-in page
         echo "<script>
                 alert('$error');
-                window.location.href='signin.html';
+                window.location.href='sign_in.html';
               </script>";
         exit();
     }
