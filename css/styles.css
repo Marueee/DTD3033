@@ -63,6 +63,16 @@ ul {
   font-weight: 600;
 }
 
+.logo a {
+  color: var(--primary-color);  /* Maintains the same color as the logo */
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: var(--second-color);  /* Changes color on hover */
+  transition: .3s;
+}
+
 /* Nav Container */
 .nav-container {
   display: flex;
@@ -120,7 +130,7 @@ ul {
 
 .fa-chevron-down {
   font-size: 12px;
-  transition: .3s;
+  transition: 1s;
   margin-left: 5px;
 }
 
@@ -145,7 +155,7 @@ ul {
   background: var(--bg-color);
   min-width: 200px;
   border-radius: 8px;
-  animation: slideUp .3s;
+  animation: slideUp 1s;
   box-shadow: var(--shadow-1);
   margin-top: 5px;
   overflow: hidden;
@@ -158,7 +168,7 @@ ul {
 .dropdown-content li a {
   padding: 12px 20px;
   display: block;
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 }
 
 .dropdown-content li a:hover {
