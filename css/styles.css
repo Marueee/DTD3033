@@ -6,10 +6,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url("img/hotel_bg.jpg");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
 }
 
 /* Reset styles */
