@@ -39,6 +39,11 @@
         <h1>Welcome to Our Hotel</h1>
         <p>Experience luxury and comfort during your stay.</p>
     </div>
+    
 </body>
+
+<footer>
+    <?php include 'footer.php'; ?>
+</footer>
 
 </html>
