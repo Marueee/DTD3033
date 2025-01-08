@@ -12,7 +12,7 @@
     <nav class="nav">
         <div class="logo">
             <a href="index.php">
-                <h1>Hotel</h1>
+                <h1>La Passion Hotel</h1>
             </a>
         </div>
         <button class="menu-toggle"><i class="fa fa-bars"></i></button>

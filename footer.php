@@ -1,3 +1,18 @@
+<style>
+    footer {
+  background: var(--bg-color);
+  color: var(--primary-color);
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f8f9fa; 
+  padding: 10px; 
+  text-align: center; 
+  border-top: 1px solid #dee2e6;
+}
+</style>
 <footer>
     <p>&copy; 2025 Your Company Name. All rights reserved.</p>
     <ul style="list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 15px;">
