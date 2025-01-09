@@ -1,9 +1,45 @@
+<?php
+session_start();
+
+include 'db_config.php';
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if ($password !== $confirm_password) {
+        $error = "Passwords do not match. Please try again.";
+    } else {
+        // Check if username already exists
+        $query = "SELECT * FROM users WHERE username = '$username'";
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) {
+            $error = "Username already exists. Please choose another one.";
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $query = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
+
+            if ($conn->query($query) === TRUE) {
+                $success = "Registration successful. You can now <a href='login.php'>login</a>.";
+            } else {
+                $error = "Error: " . $query . "<br>" . $conn->error;
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,7 +52,7 @@
             height: 100vh;
         }
 
-        .login-container {
+        .register-container {
             background: #ffffff;
             padding: 20px 30px;
             border-radius: 8px;
@@ -25,7 +61,7 @@
             max-width: 400px;
         }
 
-        .login-container h2 {
+        .register-container h2 {
             margin: 0 0 20px;
             font-size: 24px;
             color: #333333;
@@ -85,12 +121,24 @@
         .footer-text a:hover {
             text-decoration: underline;
         }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="login.php" method="POST">
+    <div class="register-container">
+        <h2>Register</h2>
+        <?php if ($error): ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
+        <?php if ($success): ?>
+            <div class="success"><?php echo $success; ?></div>
+        <?php endif; ?>
+        <form method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -100,10 +148,14 @@
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
             <div class="form-group">
-                <button type="submit">Login</button>
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Register</button>
             </div>
         </form>
-        <p class="footer-text">Don't have an account? <a href="sign_in.html">Register here</a></p>
+        <p class="footer-text">Already have an account? <a href="login.php">Login here</a></p>
     </div>
 </body>
 </html>

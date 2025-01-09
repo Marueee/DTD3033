@@ -1,28 +1,37 @@
 <?php
-// Start the session
 session_start();
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Example credentials (you can replace this with database validation)
-    $valid_username = "user";
-    $valid_password = "password";
+include 'db_config.php';
 
-    $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['password']);
+$error = '';
 
-    // Validate credentials
-    if ($username === $valid_username && $password === $valid_password) {
-        // Set session variable
-        $_SESSION['username'] = $username;
-        header("Location: index.php");
-        exit();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $_POST['password'];
+
+    // Debugging: Check the values of username and password
+    // echo "Username: $username, Password: $password";
+
+    $query = "SELECT * FROM users WHERE username = '$username'";
+    $result = $conn->query($query);
+
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        // Debugging: Check the fetched user data
+        // print_r($user);
+
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $username;
+            header('Location: index.php');
+            exit(); // Ensure no further code is executed
+        } else {
+            $error = "Invalid password. Please try again.";
+        }
     } else {
-        $error = "Invalid username or password.";
+        $error = "Username not found. Please try again.";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,11 +119,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .footer-text a:hover {
             text-decoration: underline;
         }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
+        <?php if ($error): ?>
+            <div class="error"><?php echo $error; ?></div>
+        <?php endif; ?>
         <form method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -128,8 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Login</button>
             </div>
         </form>
-        <p class="footer-text">Don't have an account? <a href="sign_in.php">Register here</a></p>
+        <p class="footer-text">Don't have an account? <a href="register.php">Register here</a></p>
     </div>
 </body>
 </html>
-
