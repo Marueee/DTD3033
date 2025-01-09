@@ -1,3 +1,6 @@
+<?php include 'db_config.php'; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +18,18 @@
 <body class="home-page">
 
     <?php include 'navigation.php'; ?>
+
+    <div class="card">
+            <h2>DB Connection Status</h2>
+            <?php
+            // Check and display connection status
+            if ($conn->connect_error) {
+                echo "<p style='color: red;'>Connection failed: " . $conn->connect_error . "</p>";
+            } else {
+                echo "<p style='color: green;'>Connected successfully</p>";
+            }
+            ?>
+        </div>
 
     <style>
         body {
