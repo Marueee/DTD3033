@@ -107,7 +107,7 @@ button:hover {
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "hotelt";
+$database = "hotel";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
