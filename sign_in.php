@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($username === $valid_username && $password === $valid_password) {
         // Set session variable
         $_SESSION['username'] = $username;
-        header("Location: welcome.php");
+        header("Location: login.php");
         exit();
     } else {
         $error = "Invalid username or password.";
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Sign In</button>
             </div>
         </form>
-        <p class="footer-text">Already have an account? <a href="Login.html">Login here</a></p>
+        <p class="footer-text">Already have an account? <a href="login.php">Login here</a></p>
     </div>
 </body>
 </html>
