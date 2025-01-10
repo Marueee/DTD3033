@@ -384,11 +384,6 @@
 		</div>
 	</section>
 
-
-
-
-
-
 	<section class="ftco-section ftco-menu bg-light">
 		<div class="container-fluid px-md-4">
 			<div class="row justify-content-center mb-5 pb-3">
