@@ -4,33 +4,34 @@ session_start();
 include '../auth/db_config.php';
 
 $error = '';
-$success = '';
+$response = array('status' => '', 'message' => '');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
 
-    if ($password !== $confirm_password) {
-        $error = "Passwords do not match. Please try again.";
-    } else {
-        // Check if username already exists
-        $query = "SELECT * FROM test_users WHERE username = '$username'";
-        $result = $conn->query($query);
+    $query = "SELECT * FROM test_users WHERE username = '$username'";
+    $result = $conn->query($query);
 
-        if ($result->num_rows > 0) {
-            $error = "Username already exists. Please choose another one.";
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $username;
+            $response['status'] = 'success';
+            $response['message'] = 'Login successful! Redirecting...';
+            echo json_encode($response);
+            exit();
         } else {
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            $query = "INSERT INTO test_users (username, password) VALUES ('$username', '$hashed_password')";
-
-            if ($conn->query($query) === TRUE) {
-                $success = "Registration successful. You can now <a href='../login/login.php'>login</a>.";
-            } else {
-                $error = "Error: " . $query . "<br>" . $conn->error;
-            }
+            $response['status'] = 'error';
+            $response['message'] = 'Invalid password. Please try again.';
+            echo json_encode($response);
+            exit();
         }
+    } else {
+        $response['status'] = 'error';
+        $response['message'] = 'Username not found. Please try again.';
+        echo json_encode($response);
+        exit();
     }
 }
 ?>
@@ -39,7 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
+    <!-- Add SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             height: 100vh;
         }
 
-        .register-container {
+        .login-container {
             background: #ffffff;
             padding: 20px 30px;
             border-radius: 8px;
@@ -61,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             max-width: 400px;
         }
 
-        .register-container h2 {
+        .login-container h2 {
             margin: 0 0 20px;
             font-size: 24px;
             color: #333333;
@@ -130,13 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <div class="register-container">
-        <h2>Register</h2>
+    <div class="login-container">
+        <h2>Login</h2>
         <?php if ($error): ?>
             <div class="error"><?php echo $error; ?></div>
-        <?php endif; ?>
-        <?php if ($success): ?>
-            <div class="success"><?php echo $success; ?></div>
         <?php endif; ?>
         <form method="POST">
             <div class="form-group">
@@ -148,14 +153,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
             <div class="form-group">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Register</button>
+                <button type="submit">Login</button>
             </div>
         </form>
-        <p class="footer-text">Already have an account? <a href="../login/login.php">Login here</a></p>
+        <p class="footer-text">Don't have an account? <a href="../register/register.php">Register here</a></p>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: 'login.php',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if(response.status === 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: response.message,
+                                timer: 2000,
+                                showConfirmButton: false
+                            }).then(function() {
+                                window.location.href = '../index.html';
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: response.message
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
