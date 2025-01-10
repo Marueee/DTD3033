@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 timer: 2000,
                                 showConfirmButton: false
                             }).then(function() {
-                                window.location.href = '../index.html';
+                                window.location.href = '../index.php';
                             });
                         } else {
                             Swal.fire({
