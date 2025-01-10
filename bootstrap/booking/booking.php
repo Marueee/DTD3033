@@ -117,8 +117,8 @@
 
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "haikal";
+$password = "haikal03";
 $database = "hotel";
 
 // Create connection
