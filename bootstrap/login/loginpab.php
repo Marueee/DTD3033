@@ -19,19 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $username;
             $response['status'] = 'success';
             $response['message'] = 'Login successful! Redirecting...';
-            echo json_encode($response);
+            header("Location: ../index.php");  // Redirect to homepage after success
             exit();
         } else {
-            $response['status'] = 'error';
-            $response['message'] = 'Invalid password. Please try again.';
-            echo json_encode($response);
-            exit();
+            $error = 'Invalid password. Please try again.';
         }
     } else {
-        $response['status'] = 'error';
-        $response['message'] = 'Username not found. Please try again.';
-        echo json_encode($response);
-        exit();
+        $error = 'Username not found. Please try again.';
     }
 }
 ?>
@@ -41,13 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <!-- Add SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
-    <!-- Add jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Add SweetAlert2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -158,39 +146,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <p class="footer-text">Don't have an account? <a href="../register/register.php">Register here</a></p>
     </div>
-
-    <script>
-        $(document).ready(function() {
-            $('form').on('submit', function(e) {
-                e.preventDefault();
-                
-                $.ajax({
-                    type: 'POST',
-                    url: 'login.php',
-                    data: $(this).serialize(),
-                    dataType: 'json',
-                    success: function(response) {
-                        if(response.status === 'success') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: response.message,
-                                timer: 2000,
-                                showConfirmButton: false
-                            }).then(function() {
-                                window.location.href = '../index.php';
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error!',
-                                text: response.message
-                            });
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
