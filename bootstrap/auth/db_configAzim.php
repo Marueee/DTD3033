@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 // Database connection parameters
 $servername = "localhost";
 $username = "root";
-$password = " ";
+$password = "";
 $dbname = "hotel";
 
 // Create a new MySQLi connection
