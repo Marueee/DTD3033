@@ -2,9 +2,56 @@
 include 'head.php';
 include 'auth/db_configAzim.php';
 
-// Fetch all rooms
-$query = "SELECT * FROM rooms ORDER BY room_number";
-$result = $conn->query($query);
+// Get sorting parameters
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'room_number';
+$order = isset($_GET['order']) ? $_GET['order'] : 'ASC';
+
+// Add room type filter
+$room_type_filter = isset($_GET['room_type']) ? $_GET['room_type'] : '';
+$valid_room_types = ['King Room', 'Suite Room', 'Family Room', 'Deluxe Room', 'Luxury Room', 'Superior Room'];
+
+// Validate sort column to prevent SQL injection
+$allowed_sort_columns = ['room_number', 'room_type', 'price_per_night', 'availability_status', 'updated_at'];
+if (!in_array($sort, $allowed_sort_columns)) {
+    $sort = 'room_number';
+}
+
+// Toggle sort order
+$new_order = ($order === 'ASC') ? 'DESC' : 'ASC';
+
+// Modify query to only use room_type filter
+try {
+    $query = "SELECT * FROM rooms WHERE 1=1";
+    $params = [];
+    $types = "";
+
+    if (!empty($room_type_filter)) {
+        $query .= " AND room_type = ?";
+        $params[] = $room_type_filter;
+        $types .= "s";
+    }
+
+    $query .= " ORDER BY $sort $order";
+    $stmt = $conn->prepare($query);
+
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+    
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+} catch(Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+// Sort indicator arrows
+function getSortIndicator($column, $currentSort, $currentOrder) {
+    if ($column === $currentSort) {
+        return ($currentOrder === 'ASC') ? ' ↑' : ' ↓';
+    }
+    return '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -62,24 +109,156 @@ $result = $conn->query($query);
             background-color: #fff3cd;
             color: #856404;
         }
+
+        .room-table th a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            padding-right: 20px;
+        }
+        
+        .room-table th a:hover {
+            color: #007bff;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-form input,
+        .search-form select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 200px;
+        }
+
+        .search-form button {
+            padding: 8px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-form button:hover {
+            background: #0056b3;
+        }
+
+        .room-table th a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .sort-icon {
+            margin-left: 5px;
+            font-size: 0.8em;
+        }
+
+        .room-table th:hover a {
+            background-color: #f5f5f5;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-form {
+            display: inline-block;
+        }
+
+        .search-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-form select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 200px;
+            font-size: 16px;
+        }
+
+        .search-form button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-form button:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="table-container">
         <h2>Room List</h2>
+        <div class="search-container">
+            <form method="GET" class="search-form">
+                <div class="search-inputs">
+                    <select name="room_type">
+                        <option value="">All Room Types</option>
+                        <?php foreach($valid_room_types as $type): ?>
+                            <option value="<?php echo $type; ?>" <?php echo ($room_type_filter === $type) ? 'selected' : ''; ?>>
+                                <?php echo $type; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
         <table class="room-table">
             <thead>
                 <tr>
-                    <th>Room Number</th>
-                    <th>Room Type</th>
-                    <th>Price per Night (RM)</th>
-                    <th>Status</th>
-                    <th>Last Updated</th>
+                    <th><a href="?sort=room_number&order=<?php echo ($sort === 'room_number') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
+                        Room Number<?php echo getSortIndicator('room_number', $sort, $order); ?>
+                    </a></th>
+                    <th><a href="?sort=room_type&order=<?php echo ($sort === 'room_type') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
+                        Room Type<?php echo getSortIndicator('room_type', $sort, $order); ?>
+                    </a></th>
+                    <th><a href="?sort=price_per_night&order=<?php echo ($sort === 'price_per_night') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
+                        Price per Night (RM)<?php echo getSortIndicator('price_per_night', $sort, $order); ?>
+                    </a></th>
+                    <th><a href="?sort=availability_status&order=<?php echo ($sort === 'availability_status') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
+                        Status<?php echo getSortIndicator('availability_status', $sort, $order); ?>
+                    </a></th>
+                    <th><a href="?sort=updated_at&order=<?php echo ($sort === 'updated_at') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
+                        Last Updated<?php echo getSortIndicator('updated_at', $sort, $order); ?>
+                    </a></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                if ($result->num_rows > 0) {
+                if ($result && $result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['availability_status']);
                         echo "<tr>";

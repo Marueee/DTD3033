@@ -64,8 +64,6 @@ try {
     <title>Edit Rooms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* ... existing styles ... */
-        
         .action-buttons {
             display: flex;
             gap: 10px;
@@ -76,88 +74,97 @@ try {
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            color: white;
+            font-size: 14px;
+            text-decoration: none; 
         }
         
         .edit-btn {
-            background-color: #ffc107;
-            color: #000;
+            background-color: #007bff;
+        }
+        
+        .edit-btn:hover {
+            background-color: #0056b3;
         }
         
         .delete-btn {
             background-color: #dc3545;
-            color: #fff;
+        }
+        
+        .delete-btn:hover {
+            background-color: #c82333;
         }
         
         .modal {
-        display: none; /* Changed from flex to none */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-    }
-
-    .modal.show {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 500px;
-        position: relative;
-        animation: modalFade 0.3s ease-in-out;
-    }
-
-    @keyframes modalFade {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        .modal.show {
+            display: flex;
         }
-    }
 
-    .modal .form-group {
-        margin-bottom: 15px;
-    }
+        .modal-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalFade 0.3s ease-in-out;
+        }
 
-    .modal label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .modal input,
-    .modal select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+        .modal .form-group {
+            margin-bottom: 15px;
+        }
 
-    .modal .submit-btn {
-        margin: 5px;
-        padding: 8px 15px;
-    }
+        .modal label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-    .modal button[type="submit"] {
-        background: #007bff;
-        color: white;
-    }
+        .modal input,
+        .modal select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
 
-    .modal button[onclick="closeModal()"] {
-        background: #6c757d;
-        color: white;
-    }
+        .modal .submit-btn {
+            margin: 5px;
+            padding: 8px 15px;
+        }
+
+        .modal button[type="submit"] {
+            background: #007bff;
+            color: white;
+        }
+
+        .modal button[onclick="closeModal()"] {
+            background: #6c757d;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -176,6 +183,16 @@ try {
             </thead>
             <tbody>
                 <?php
+                // Fetch all rooms using prepared statement
+                try {
+                    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $stmt->close();
+                } catch(Exception $e) {
+                    echo "Error fetching rooms: " . $e->getMessage();
+                }
+
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['availability_status']);
@@ -186,8 +203,8 @@ try {
                         echo "<td><span class='status ".$statusClass."'>".$row['availability_status']."</span></td>";
                         echo "<td>".date('d M Y H:i', strtotime($row['updated_at']))."</td>";
                         echo "<td class='action-buttons'>
-                                <button class='edit-btn' onclick='editRoom(".$row['room_id'].")'><i class='fas fa-edit'></i></button>
-                                <button class='delete-btn' onclick='deleteRoom(".$row['room_id'].")'><i class='fas fa-trash'></i></button>
+                                <button class='edit-btn' onclick='editRoom(".$row['room_id'].")'><i class='fas fa-edit'></i> Edit</button>
+                                <button class='delete-btn' onclick='deleteRoom(".$row['room_id'].")'><i class='fas fa-trash'></i> Delete</button>
                               </td>";
                         echo "</tr>";
                     }
