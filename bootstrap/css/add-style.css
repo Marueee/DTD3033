@@ -6,6 +6,8 @@
     margin: 20px 0;
 }
 
+
+
 button,
 button:focus {
   font-size: 17px;
@@ -25,3 +27,9 @@ button:active {
   transform: translate(0, 0);
   border-bottom: 2px solid rgb(50, 50, 50);
 }
+
+button:hover {
+  
+  color: aliceblue;
+  background-image: linear-gradient(rgb(85, 74, 121), rgb(60, 49, 94));
+  text-decoration: none; }

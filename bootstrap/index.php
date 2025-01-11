@@ -92,11 +92,11 @@
 												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
 												<select name="" id="" class="form-control">
 													<option value="">1 Adult</option>
-													<option value="">2 Adult</option>
-													<option value="">3 Adult</option>
-													<option value="">4 Adult</option>
-													<option value="">5 Adult</option>
-													<option value="">6 Adult</option>
+													<option value="">2 Adults</option>
+													<option value="">3 Adults</option>
+													<option value="">4 Adults</option>
+													<option value="">5 Adults</option>
+													<option value="">6 Adults</option>
 												</select>
 											</div>
 										</div>
@@ -116,14 +116,14 @@
 	</section>
 
 	<section class="button_click me">
-		<a href="booking/booking.php"><button>Book a room</button></a>
+		<a href="booking/booking.php" ><button>Book a room</button></a>
 	</section>
 
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Welcome to Harbor Lights Hotel</span>
+					<span class="subheading">Welcome to La Passion Hotel</span>
 					<h2 class="mb-4">You'll Never Want To Leave</h2>
 				</div>
 			</div>
@@ -152,7 +152,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md px-md-1 d-flex align-sel Searchf-stretch ftco-animate">
+				<!-- <div class="col-md px-md-1 d-flex align-sel Searchf-stretch ftco-animate">
 					<div class="media block-6 services py-4 d-block text-center">
 						<div class="d-flex justify-content-center">
 							<div class="icon d-flex align-items-center justify-content-center">
@@ -163,7 +163,7 @@
 							<h3 class="heading mb-3">Transfer Services</h3>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
 					<div class="media block-6 services py-4 d-block text-center">
 						<div class="d-flex justify-content-center">
@@ -183,7 +183,7 @@
 								<span class="ion-ios-bed"></span>
 							</div>
 						</div>
-						<div class="media-body">
+						<div class="media-body" >
 							<h3 class="heading mb-3">Cozy Rooms</h3>
 						</div>
 					</div>
@@ -201,11 +201,11 @@
 				</div>
 				<div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
 					<div class="heading-section mb-4 my-5 my-md-0">
-						<span class="subheading">About Harbor Lights Hotel</span>
-						<h2 class="mb-4">Harbor Lights Hotel the Most Recommended Hotel All Over the World</h2>
+						<span class="subheading">About La Passion Hotel</span>
+						<h2 class="mb-4">La Passion Hotel the Most Recommended Hotel All Over the World</h2>
 					</div>
 					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-					<p><a href="#" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
+					<p><a href="rooms.php" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
 				</div>
 			</div>
 		</div>
@@ -227,13 +227,13 @@
 							<div class="item">
 								<div class="testimony-wrap pb-4">
 									<div class="text">
-										<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										<p class="mb-4">While the staff was polite and helpful, the room service took longer than expected, and the Wi-Fi connection was inconsistent. Fixing these issues would make this hotel perfect!</p>
 									</div>
 									<div class="d-flex">
 										<div class="user-img" style="background-image: url(images/person_1.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Gerald Hodson</p>
+											<p class="name">Megan Axolotl</p>
 											<span class="position">Businessman</span>
 										</div>
 									</div>
@@ -242,14 +242,14 @@
 							<div class="item">
 								<div class="testimony-wrap pb-4">
 									<div class="text">
-										<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										<p class="mb-4">Relaxing places to disconnect you from any problems.</p>
 									</div>
 									<div class="d-flex">
-										<div class="user-img" style="background-image: url(images/person_2.jpg)">
+										<div class="user-img" style="background-image: url(images/person_5.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Gerald Hodson</p>
-											<span class="position">Businessman</span>
+											<p class="name">Cristopher Alex</p>
+											<span class="position">CEO</span>
 										</div>
 									</div>
 								</div>
@@ -257,14 +257,14 @@
 							<div class="item">
 								<div class="testimony-wrap pb-4">
 									<div class="text">
-										<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										<p class="mb-4">While the staff was polite and helpful, the room service took longer than expected, and the Wi-Fi connection was inconsistent. Fixing these issues would make this hotel perfect!</p>
 									</div>
 									<div class="d-flex">
 										<div class="user-img" style="background-image: url(images/person_3.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Gerald Hodson</p>
-											<span class="position">Businessman</span>
+											<p class="name">Jamal Trevor</p>
+											<span class="position">Athlete</span>
 										</div>
 									</div>
 								</div>
@@ -272,13 +272,13 @@
 							<div class="item">
 								<div class="testimony-wrap pb-4">
 									<div class="text">
-										<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+										<p class="mb-4">The hotel exceeded my expectations in every way. The rooms were spotless, the staff was incredibly friendly, and the amenities were top-notch. I’ll definitely be coming back!</p>
 									</div>
 									<div class="d-flex">
 										<div class="user-img" style="background-image: url(images/person_4.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Gerald Hodson</p>
+											<p class="name">Mustafa Columbus</p>
 											<span class="position">Businessman</span>
 										</div>
 									</div>
@@ -291,11 +291,11 @@
 		</div>
 	</section>
 
-	<section class="ftco-section ftco-no-pb ftco-room">
+	<!-- <section class="ftco-section ftco-no-pb ftco-room">
 		<div class="container-fluid px-0">
 			<div class="row no-gutters justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Harbor Lights Rooms</span>
+					<span class="subheading">La Passion Rooms</span>
 					<h2 class="mb-4">Hotel Master's Rooms</h2>
 				</div>
 			</div>
@@ -308,7 +308,7 @@
 								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
 								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 								<h3 class="mb-3"><a href="rooms.html">King Room</a></h3>
-								<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
 							</div>
 						</div>
 					</div>
@@ -321,7 +321,7 @@
 								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
 								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 								<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-								<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
 							</div>
 						</div>
 					</div>
@@ -335,7 +335,7 @@
 								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
 								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 								<h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-								<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
 							</div>
 						</div>
 					</div>
@@ -348,7 +348,7 @@
 								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
 								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 								<h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-								<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
 							</div>
 						</div>
 					</div>
@@ -362,7 +362,7 @@
 								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
 								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 								<h3 class="mb-3"><a href="rooms.html">Luxury Room</a></h3>
-								<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
 							</div>
 						</div>
 					</div>
@@ -375,14 +375,14 @@
 								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
 								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
 								<h3 class="mb-3"><a href="rooms.html">Superior Room</a></h3>
-								<p class="pt-1"><a href="room-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<section class="ftco-section ftco-menu bg-light">
 		<div class="container-fluid px-md-4">
@@ -402,7 +402,7 @@
 								<span class="price">$20.00</span>
 							</div>
 							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
+								<p>A small river named Muallim flows by their place and supplies</p>
 							</div>
 						</div>
 					</div>
@@ -588,70 +588,7 @@
 		</div>
 	</section>
 
-	<footer class="ftco-footer ftco-section img" style="background-image: url(images/bg_4.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Harbor Lights</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-5">
-						<h2 class="ftco-heading-2">Useful Links</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Blog</a></li>
-							<li><a href="#" class="py-2 d-block">Rooms</a></li>
-							<li><a href="#" class="py-2 d-block">Amenities</a></li>
-							<li><a href="#" class="py-2 d-block">Gift Card</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Privacy</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Career</a></li>
-							<li><a href="#" class="py-2 d-block">About Us</a></li>
-							<li><a href="#" class="py-2 d-block">Contact Us</a></li>
-							<li><a href="#" class="py-2 d-block">Services</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
-
-					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-
+	<?php include 'footer.php'; ?>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
