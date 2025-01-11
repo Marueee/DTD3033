@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../auth/db_config.php';
+include '../auth/db_configAzim.php';
 
 $error = '';
 $success = '';
