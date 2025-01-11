@@ -105,7 +105,7 @@
 							</div>
 							<div class="col-md d-flex">
 								<div class="form-group d-flex align-self-stretch">
-									<a href="login/login.php" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block"><span>Check Availability <small>Best Price Guaranteed!</small></span></a>
+									<a href="rooms.php" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block"><span>Check Availability <small>Best Price Guaranteed!</small></span></a>
 								</div>
 							</div>
 						</div>
@@ -384,7 +384,7 @@
 		</div>
 	</section> -->
 
-	<section class="ftco-section ftco-menu bg-light">
+	<!-- <section class="ftco-section ftco-menu bg-light">
 		<div class="container-fluid px-md-4">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
@@ -482,10 +482,10 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 
-	<section class="ftco-section">
+	<!-- <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
@@ -538,7 +538,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<section class="instagram">
 		<div class="container-fluid">
