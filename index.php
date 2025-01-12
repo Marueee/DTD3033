@@ -105,7 +105,7 @@
 							</div>
 							<div class="col-md d-flex">
 								<div class="form-group d-flex align-self-stretch">
-									<a href="rooms.php" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block"><span>Check Availability <small>Best Price Guaranteed!</small></span></a>
+									<a href="rooms/show-rooms.php" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block"><span>Check Availability <small>Best Price Guaranteed!</small></span></a>
 								</div>
 							</div>
 						</div>
