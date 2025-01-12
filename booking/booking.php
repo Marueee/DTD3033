@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 
 // Fetch room types and availability
 $rooms = [];
-$result = $conn->query("SELECT room_id, room_type, price_per_night, status FROM rooms");
+$result = $conn->query("SELECT room_id, room_type, price_per_night, status, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if (!isset($rooms[$row['room_type']])) {
@@ -32,21 +32,12 @@ if ($result->num_rows > 0) {
                 'room_id' => $row['room_id'],
                 'price_per_night' => $row['price_per_night'],
                 'status' => $row['status'],
-                'occupied' => 0,
+                'occupied' => $row['occupied'],
                 'total' => 1
             ];
         } else {
             $rooms[$row['room_type']]['total']++;
-        }
-    }
-}
-
-// Fetch occupied rooms
-$result = $conn->query("SELECT room_id, room_type FROM rooms WHERE status = 'occupied'");
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        if (isset($rooms[$row['room_type']])) {
-            $rooms[$row['room_type']]['occupied']++;
+            $rooms[$row['room_type']]['occupied'] += $row['occupied'];
         }
     }
 }
@@ -140,7 +131,7 @@ $conn->close();
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
-                                            <?php if ($room['occupied'] < $room['total']): ?>
+                                            <?php if ($room['occupied'] < $room['total'] && $room['status'] != 'occupied'): ?>
                                                 <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
