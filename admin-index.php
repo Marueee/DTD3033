@@ -3,6 +3,29 @@
 
 <head>
 	<?php include 'head.php'; ?>
+	<style>
+		/* Improve visibility */
+		.text h1, .text h2 {
+			color: #fff;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+		/* Add icons inside the circles */
+		.icon {
+			position: relative;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background: #f96d00;
+			color: #fff;
+			font-size: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.icon span {
+			position: absolute;
+		}
+	</style>
 </head>
 
 <body>
@@ -58,7 +81,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="admin-dashboard.php">Dashboard</a></h3>
+							<h3 class="heading mb-3"><a href="admin-dashboard.php"><span class="flaticon-dashboard"></span> Dashboard</a></h3>
 						</div>
 					</div>
 				</div>
@@ -70,7 +93,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="rooms/rooms-admin.php">Manage Rooms</a></h3>
+							<h3 class="heading mb-3"><a href="rooms/rooms-admin.php"><span class="flaticon-room-service"></span> Manage Rooms</a></h3>
 						</div>
 					</div>
 				</div>
@@ -82,7 +105,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="manage-bookings.php">Manage Bookings</a></h3>
+							<h3 class="heading mb-3"><a href="manage-bookings.php"><span class="flaticon-booking"></span> Manage Bookings</a></h3>
 						</div>
 					</div>
 				</div>
@@ -94,7 +117,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="settings.php">Settings</a></h3>
+							<h3 class="heading mb-3"><a href="settings.php"><span class="flaticon-settings"></span> Settings</a></h3>
 						</div>
 					</div>
 				</div>
