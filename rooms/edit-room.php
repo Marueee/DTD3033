@@ -219,6 +219,8 @@ try {
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            position: absolute;
+            left: 20px;
         }
 
         .back-btn:hover {
@@ -229,8 +231,8 @@ try {
 
 <body>
     <div class="table-container">
-        <h2>Manage Rooms</h2>
         <a href="rooms-admin.php" class="back-btn">Back</a>
+        <h2>Manage Rooms</h2>
         <table class="room-table">
             <thead>
                 <tr>
