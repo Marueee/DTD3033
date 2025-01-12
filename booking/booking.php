@@ -42,6 +42,9 @@ if ($result->num_rows > 0) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_SESSION['user_id'])) {
+        die("User ID not set in session.");
+    }
     $user_id = $_SESSION['user_id']; // Assuming user_id is stored in session
     $room_id = $_POST['room']; // Assuming room_id is selected from a dropdown
     $checkin = $_POST['checkin'];
@@ -50,6 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Fetch the price for the selected room
     $result = $conn->query("SELECT price_per_night FROM rooms WHERE room_id = '$room_id'");
+    if ($result->num_rows == 0) {
+        die("Invalid room ID.");
+    }
     $room = $result->fetch_assoc();
     $price_per_night = $room['price_per_night'];
 
