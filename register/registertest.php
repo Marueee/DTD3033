@@ -106,6 +106,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <input type="confirm_password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" class="form-control" required>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group mt-4">
+                                    <button type="submit" class="btn btn-primary py-3 px-4">Register</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                     <p class="footer-text">Already have an account? <a href="../login/login.php">Login here</a></p>
@@ -138,6 +143,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="../js/google-map.js"></script>
     <script src="../js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-
 </body>
 </html>
