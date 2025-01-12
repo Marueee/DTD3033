@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
 
-    $query = "SELECT user_id, username, password FROM test_users WHERE username = '$username'";
+    $query = "SELECT user_id, username, password FROM users WHERE username = '$username'";
     $result = $conn->query($query);
 
     if ($result->num_rows === 1) {
