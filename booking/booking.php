@@ -9,6 +9,11 @@ if (!isset($_SESSION['username'])) {
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Debugging: Print session data
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
 $servername = "localhost";
 $username = "haikal";
 $password = "haikal03";
