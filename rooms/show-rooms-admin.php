@@ -236,12 +236,16 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
         .back-btn:hover {
             background-color: #5a6268;
         }
+
+        .center-text {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="table-container">
         <a href="rooms-admin.php" class="back-btn">Back</a>
-        <h2>Room List</h2>
+        <h2 class="center-text">Room List</h2>
         <div class="search-container">
             <form method="GET" class="search-form">
                 <div class="search-inputs">
