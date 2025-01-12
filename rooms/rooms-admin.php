@@ -113,7 +113,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="edit-rooms.php"><span class="flaticon-edit"></span> Edit Rooms</a></h3>
+							<h3 class="heading mb-3"><a href="edit-room.php"><span class="flaticon-edit"></span> Edit Rooms</a></h3>
 						</div>
 					</div>
 				</div>

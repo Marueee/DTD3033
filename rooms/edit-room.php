@@ -2,6 +2,7 @@
 include 'head.php';
 include '../auth/db_config.php';
 
+
 // Define valid room types
 $valid_room_types = ['King Room', 'Suite Room', 'Family Room', 'Deluxe Room', 'Luxury Room', 'Superior Room'];
 
@@ -62,6 +63,7 @@ try {
 <html lang="en">
 
 <head>
+    <?php include '../admin-navbar.php'; ?>
     <title>Edit Rooms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
