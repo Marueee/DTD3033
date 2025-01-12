@@ -70,7 +70,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Manage Rooms</h3>
+							<h3 class="heading mb-3" href="rooms/rooms-admin.php">Manage Rooms</h3>
 						</div>
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Manage Bookings</h3>
+							<h3 class="heading mb-3" href="admin-index.php">Manage Bookings</h3>
 						</div>
 					</div>
 				</div>
