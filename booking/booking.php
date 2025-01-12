@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 
 // Fetch room types and availability
 $rooms = [];
-$result = $conn->query("SELECT room_id, room_type, price_per_night, status, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
+$result = $conn->query("SELECT room_id, room_type, price_per_night, status FROM rooms");
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if (!isset($rooms[$row['room_type']])) {
@@ -32,12 +32,21 @@ if ($result->num_rows > 0) {
                 'room_id' => $row['room_id'],
                 'price_per_night' => $row['price_per_night'],
                 'status' => $row['status'],
-                'occupied' => $row['occupied'],
+                'occupied' => 0,
                 'total' => 1
             ];
         } else {
             $rooms[$row['room_type']]['total']++;
-            $rooms[$row['room_type']]['occupied'] += $row['occupied'];
+        }
+    }
+}
+
+// Fetch occupied rooms
+$result = $conn->query("SELECT room_id, room_type FROM rooms WHERE status = 'occupied'");
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        if (isset($rooms[$row['room_type']])) {
+            $rooms[$row['room_type']]['occupied']++;
         }
     }
 }
@@ -53,12 +62,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $no_of_guest = $_POST['no_of_guest'];
 
     // Fetch the price for the selected room
-    $result = $conn->query("SELECT price_per_night FROM rooms WHERE room_id = '$room_id'");
+    $result = $conn->query("SELECT room_type, price_per_night FROM rooms WHERE room_id = '$room_id'");
     if ($result->num_rows == 0) {
         die("Invalid room ID.");
     }
     $room = $result->fetch_assoc();
+    $room_type = $room['room_type'];
     $price_per_night = $room['price_per_night'];
+
+    // Find an available room of the same type
+    $available_room_result = $conn->query("SELECT room_id FROM rooms WHERE room_type = '$room_type' AND status != 'occupied' LIMIT 1");
+    if ($available_room_result->num_rows == 0) {
+        die("No available rooms of the selected type.");
+    }
+    $available_room = $available_room_result->fetch_assoc();
+    $room_id = $available_room['room_id'];
 
     // Calculate total price (assuming price is per night)
     $checkin_date = new DateTime($checkin);
@@ -131,7 +149,7 @@ $conn->close();
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
-                                            <?php if ($room['occupied'] < $room['total'] && $room['status'] != 'occupied'): ?>
+                                            <?php if ($room['occupied'] < $room['total']): ?>
                                                 <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
