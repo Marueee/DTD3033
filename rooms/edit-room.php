@@ -69,6 +69,7 @@ try {
     <style>
         .table-container {
             margin: 20px;
+            text-align: center; /* Center the text */
         }
 
         .room-table {
@@ -207,12 +208,29 @@ try {
             background: #6c757d;
             color: white;
         }
+
+        .back-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 
 <body>
     <div class="table-container">
         <h2>Manage Rooms</h2>
+        <a href="rooms-admin.php" class="back-btn">Back</a>
         <table class="room-table">
             <thead>
                 <tr>
