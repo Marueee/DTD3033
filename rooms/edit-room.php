@@ -67,10 +67,48 @@ try {
     <title>Edit Rooms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .edit-btn {
-            background-color: #007bff;
-            /* Blue */
-            color: white;
+        .table-container {
+            margin: 20px;
+        }
+
+        .room-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .room-table th, .room-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .room-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .room-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .room-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .status.available {
+            color: green;
+        }
+
+        .status.occupied {
+            color: red;
+        }
+
+        .status.maintenance {
+            color: orange;
+        }
+
+        .edit-btn, .delete-btn {
             padding: 5px 10px;
             border: none;
             border-radius: 4px;
@@ -78,6 +116,11 @@ try {
             font-size: 14px;
             text-decoration: none;
             transition: background-color 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
         }
 
         .edit-btn:hover {
@@ -86,15 +129,7 @@ try {
 
         .delete-btn {
             background-color: #dc3545;
-            /* Red */
             color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
         }
 
         .delete-btn:hover {
