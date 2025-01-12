@@ -76,6 +76,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <form method="POST" class="billing-form">
                         <h3 class="mb-4 billing-heading">Registration Details</h3>
                         <div class="row align-items-end">
+                        <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="name" id="name" name="name" placeholder="Enter your full name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="phone" id="phone" name="phone" placeholder="Enter your phone number" class="form-control" required>
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="username">Username</label>
@@ -89,8 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group mt-4">
-                                    <button type="submit" class="btn btn-primary py-3 px-4">Register</button>
+                                <div class="form-group">
+                                    <label for="confirm_password">Password</label>
+                                    <input type="confirm_password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -125,38 +138,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="../js/google-map.js"></script>
     <script src="../js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('form').on('submit', function(e) {
-                e.preventDefault();
-                
-                $.ajax({
-                    type: 'POST',
-                    url: 'registertest.php',
-                    data: $(this).serialize(),
-                    dataType: 'json',
-                    success: function(response) {
-                        if(response.status === 'success') {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: response.message,
-                                timer: 2000,
-                                showConfirmButton: false
-                            }).then(function() {
-                                window.location.href = '../login/login.php';
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error!',
-                                text: response.message
-                            });
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+
 </body>
 </html>
