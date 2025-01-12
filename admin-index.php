@@ -58,7 +58,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Dashboard</h3>
+							<h3 class="heading mb-3"><a href="admin-dashboard.php">Dashboard</a></h3>
 						</div>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3" href="rooms/rooms-admin.php">Manage Rooms</h3>
+							<h3 class="heading mb-3"><a href="rooms/rooms-admin.php">Manage Rooms</a></h3>
 						</div>
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3" href="admin-index.php">Manage Bookings</h3>
+							<h3 class="heading mb-3"><a href="manage-bookings.php">Manage Bookings</a></h3>
 						</div>
 					</div>
 				</div>
@@ -94,7 +94,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Settings</h3>
+							<h3 class="heading mb-3"><a href="settings.php">Settings</a></h3>
 						</div>
 					</div>
 				</div>
