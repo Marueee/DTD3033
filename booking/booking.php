@@ -1,4 +1,10 @@
 <?php
+  session_start();
+  if (!isset($_SESSION['username'])) {
+      header('Location: home.html');
+      exit;
+  }
+
 $servername = "localhost";
 $username = "haikal";
 $password = "haikal03";
