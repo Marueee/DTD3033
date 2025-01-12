@@ -3,7 +3,7 @@ session_start();
 
 include '../auth/db_config.php';
 
-$response = array('status' => '', 'message' => '');
+$response = array('status' => '', 'message' => '', 'role' => '');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['role'] = $user['role'];
             $response['status'] = 'success';
             $response['message'] = 'Login successful! Redirecting...';
+            $response['role'] = $user['role'];
             echo json_encode($response);
             exit();
         } else {
