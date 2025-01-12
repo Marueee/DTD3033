@@ -24,13 +24,13 @@ if ($conn->connect_error) {
 
 // Fetch room types and availability
 $rooms = [];
-$result = $conn->query("SELECT room_id, room_type, price, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
+$result = $conn->query("SELECT room_id, room_type, price_per_night, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if (!isset($rooms[$row['room_type']])) {
             $rooms[$row['room_type']] = [
                 'room_id' => $row['room_id'],
-                'price' => $row['price'],
+                'price_per_night' => $row['price_per_night'],
                 'occupied' => $row['occupied'],
                 'total' => 1
             ];
@@ -49,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $no_of_guest = $_POST['no_of_guest'];
 
     // Fetch the price for the selected room
-    $result = $conn->query("SELECT price FROM rooms WHERE room_id = '$room_id'");
+    $result = $conn->query("SELECT price_per_night FROM rooms WHERE room_id = '$room_id'");
     $room = $result->fetch_assoc();
-    $price_per_night = $room['price'];
+    $price_per_night = $room['price_per_night'];
 
     // Calculate total price (assuming price is per night)
     $checkin_date = new DateTime($checkin);
@@ -118,7 +118,7 @@ $conn->close();
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
                                             <?php if ($room['occupied'] < $room['total']): ?>
-                                                <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price']; ?>/night</option>
+                                                <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
                                             <?php endif; ?>
