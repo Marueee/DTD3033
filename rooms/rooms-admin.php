@@ -1,78 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	<?php include 'head.php';?>
-  </head>
-  <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="../index.php">La<span>Passion</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+<head>
+	<?php include 'head.php'; ?>
+	<style>
+		/* Improve visibility */
+		.text h1, .text h2 {
+			color: #fff;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+		}
+		/* Add icons inside the circles */
+		.icon {
+			position: relative;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background: #f96d00;
+			color: #fff;
+			font-size: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.icon span {
+			position: absolute;
+		}
+	</style>
+</head>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="../index.php" class="nav-link">Home</a></li>
-	          <li class="nav-item active"><a href="../rooms.php" class="nav-link">Our Rooms</a></li>
-	          <li class="nav-item"><a href="../restaurant.html" class="nav-link">Restaurant</a></li>
-	          <li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
-	          <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-		<div class="hero-wrap" style="background-image: url('../images/bg_3.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-          	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../index.php">Home</a></span> <span>Restaurant</span></p>
-	            <h1 class="mb-4 bread">Rooms</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<body>
 
-	<section>
-		<?php include 'add-rooms.php';?>
+	<?php include 'admin-navbar.php'; ?>
+
+	<div class="admin-hero">
+		<section class="admin-home-slider owl-carousel">
+			<div class="slider-item" style="background-image:url(images/admin_bg_1.jpg);">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row no-gutters slider-text align-items-center justify-content-end">
+						<div class="col-md-6 ftco-animate">
+							<div class="text">
+								<h2>Welcome Admin</h2>
+								<h1 class="mb-3">Manage Your Hotel Efficiently</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item" style="background-image:url(images/admin_bg_2.jpg);">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row no-gutters slider-text align-items-center justify-content-end">
+						<div class="col-md-6 ftco-animate">
+							<div class="text">
+								<h2>Admin Dashboard</h2>
+								<h1 class="mb-3">All the Tools You Need</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<span class="subheading">Admin Panel</span>
+					<h2 class="mb-4">Manage Your Hotel</h2>
+				</div>
+			</div>
+			<div class="row d-flex">
+				<div class="col-md pr-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-dashboard"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="admin-dashboard.php"><span class="flaticon-dashboard"></span> Dashboard</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services active py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-room-service"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="rooms/rooms-admin.php"><span class="flaticon-room-service"></span> Manage Rooms</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-booking"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="manage-bookings.php"><span class="flaticon-booking"></span> Manage Bookings</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md pl-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-settings"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="settings.php"><span class="flaticon-settings"></span> Settings</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md pr-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-add"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="add-rooms.php"><span class="flaticon-add"></span> Add Rooms</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-edit"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="edit-rooms.php"><span class="flaticon-edit"></span> Edit Rooms</a></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md pl-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-view"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="show-rooms.php"><span class="flaticon-view"></span> Show Rooms</a></h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
-	<section>
-		<?php include 'show-rooms.php';?>
-	</section>
+	<?php include 'footer.php'; ?>
 
-	<section>
-		<?php include 'edit-room.php';?>
-	</section>
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+		</svg></div>
 
-  <?php include '../footer.php';?> 
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/main.js"></script>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+</body>
 
-
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../s/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
-    
-  </body>
 </html>

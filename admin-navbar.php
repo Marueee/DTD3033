@@ -9,7 +9,7 @@
 				<a class="nav-link" href="admin-index.php">Dashboard</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="manage-rooms.php">Manage Rooms</a>
+				<a class="nav-link" href="rooms/rooms-admin.php">Manage Rooms</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="manage-bookings.php">Manage Bookings</a>
