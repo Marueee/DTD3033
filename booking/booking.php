@@ -150,7 +150,7 @@ $conn->close();
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
                                             <?php if ($room['occupied'] < $room['total']): ?>
-                                                <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
+                                                <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - RM<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
                                             <?php endif; ?>
