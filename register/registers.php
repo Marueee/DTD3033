@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                         </div>
                     </form>
-                    <p class="footer-text">Already have an account? <a href="../login/login.php">Login here</a></p>
+                    <p class="footer-text">Already have an account? <a href="../login/logins.php">Login here</a></p>
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 timer: 2000,
                                 showConfirmButton: false
                             }).then(function() {
-                                window.location.href = '../login/login.php';
+                                window.location.href = '../login/logins.php';
                             });
                         } else {
                             Swal.fire({
