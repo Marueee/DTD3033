@@ -65,14 +65,14 @@
 			<div class="row">
 				<div class="col-lg-6 col-xl-6 d-flex">
 					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/NasiKerabu.jpg);"></div>
+						<div class="img" style="background-image: url(images/nasiKerabu.jpg);"></div>
 						<div class="desc p-4">
 							<div class="d-md-flex text align-items-start">
 								<h3><span>Nasi Kerabu</span></h3>
 								<span class="price">RM20.00</span>
 							</div>
 							<div class="d-block">
-								<p>Traditional rice from Kelantan make you feel the culture and environment there</p>
+								<p>Fragrant blue rice with fresh herbs, grilled meats, and a spicy coconut-based sauce.</p>
 							</div>
 						</div>
 					</div>
@@ -86,7 +86,7 @@
 								<span class="price">RM13.00</span>
 							</div>
 							<div class="d-block">
-								<p>Our Best Seller! every Malaysian favourite</p>
+								<p>Coconut-infused rice served with sambal, crispy anchovies, boiled egg, peanuts, and cucumber.</p>
 							</div>
 						</div>
 					</div>
@@ -96,11 +96,11 @@
 						<div class="img" style="background-image: url(images/menu-3.jpg);"></div>
 						<div class="desc p-4">
 							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
+								<h3><span>Pancake</span></h3>
+								<span class="price">RM9.00</span>
 							</div>
 							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
+								<p>Fluffy, golden pancakes served with maple syrup, fresh berries, and a dollop of whipped cream.</p>
 							</div>
 						</div>
 					</div>
@@ -111,25 +111,25 @@
 						<div class="img" style="background-image: url(images/menu-4.jpg);"></div>
 						<div class="desc p-4">
 							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
+								<h3><span>Beef Steak</span></h3>
+								<span class="price">RM80.00</span>
 							</div>
 							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
+								<p>Juicy, tender grilled beefsteak served with creamy sauce, garlic mashed potatoes, and buttered vegetables.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6 col-xl-6 d-flex">
 					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-5.jpg);"></div>
+						<div class="img" style="background-image: url(images/Pizza.jpeg);"></div>
 						<div class="desc p-4">
 							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
+								<h3><span>Pizza</span></h3>
+								<span class="price">RM79.00</span>
 							</div>
 							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
+								<p>Hand-tossed pizza with a crispy crust, rich tomato sauce, melted cheese, and your choice of toppings.</p>
 							</div>
 						</div>
 					</div>
@@ -143,7 +143,7 @@
 								<span class="price">RM45.00</span>
 							</div>
 							<div class="d-block">
-								<p>Fresh from the sea and grill with premium charcoal</p>
+								<p>Succulent lobster tail grilled to perfection, served with garlic butter and lemon wedges</p>
 							</div>
 						</div>
 					</div>
@@ -158,7 +158,7 @@
 								<span class="price">RM80.00</span>
 							</div>
 							<div class="d-block">
-								<p>Fresh oyster from the atlantic ocean</p>
+								<p>Delicate and briny, served on ice with lemon and a tangy vinaigrette.</p>
 							</div>
 						</div>
 					</div>
@@ -172,7 +172,7 @@
 								<span class="price">RM230.00</span>
 							</div>
 							<div class="d-block">
-								<p>All the way from the Japan to your mouth</p>
+								<p>Exquisite marbled Wagyu beef, grilled to perfection for a melt-in-your-mouth experience.</p>
 							</div>
 						</div>
 					</div>
@@ -182,11 +182,11 @@
 						<div class="img" style="background-image: url(images/SetTalam.jpg);"></div>
 						<div class="desc p-4">
 							<div class="d-md-flex text align-items-start">
-								<h3><span>'Talam Set'</span></h3>
-								<span class="price">RM119.00</span>
+								<h3><span>Talam Set</span></h3>
+								<span class="price">RM129.00</span>
 							</div>
 							<div class="d-block">
-								<p>Set of food for 3 or 4 peoples together while enjoy the view</p>
+								<p>A generous platter of rice, curries, grilled meats, and assorted sides, perfect for 3-4 people to share.</p>
 							</div>
 						</div>
 					</div>
