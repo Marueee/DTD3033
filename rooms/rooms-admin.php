@@ -38,9 +38,19 @@
         </div>
       </div>
     </div>
-	<?php include '../add-rooms.php';?> 
-	<?php include '../show-rooms.php';?> 
-	<?php include '../edit-rooms.php';?> 
+
+	<section>
+		<?php include 'add-rooms.php';?>
+	</section>
+
+	<section>
+		<?php include 'show-rooms.php';?>
+	</section>
+
+	<section>
+		<?php include 'edit-room.php';?>
+	</section>
+
   <?php include '../footer.php';?> 
 
   <!-- loader -->
