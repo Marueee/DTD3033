@@ -24,13 +24,14 @@ if ($conn->connect_error) {
 
 // Fetch room types and availability
 $rooms = [];
-$result = $conn->query("SELECT room_id, room_type, price_per_night, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
+$result = $conn->query("SELECT room_id, room_type, price_per_night, status, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         if (!isset($rooms[$row['room_type']])) {
             $rooms[$row['room_type']] = [
                 'room_id' => $row['room_id'],
                 'price_per_night' => $row['price_per_night'],
+                'status' => $row['status'],
                 'occupied' => $row['occupied'],
                 'total' => 1
             ];
@@ -66,10 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nights = $interval->days;
     $total_price = $nights * $price_per_night * $no_of_guest;
 
+    // Insert reservation
     $sql = "INSERT INTO reservations (user_id, room_id, checkin_date, checkout_date, no_of_guest, total_price) 
             VALUES ('$user_id', '$room_id', '$checkin', '$checkout', '$no_of_guest', '$total_price')";
-
     if ($conn->query($sql) === TRUE) {
+        // Update room status to booked
+        $update_sql = "UPDATE rooms SET status = 'booked' WHERE room_id = '$room_id'";
+        $conn->query($update_sql);
+
         header('Location: booking_complete.php');
         exit();
     } else {
@@ -124,7 +129,7 @@ $conn->close();
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
-                                            <?php if ($room['occupied'] < $room['total']): ?>
+                                            <?php if ($room['occupied'] < $room['total'] && $room['status'] != 'booked'): ?>
                                                 <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
