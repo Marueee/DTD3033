@@ -123,20 +123,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .footer-text a:hover {
             text-decoration: underline;
         }
-
-        .error {
-            color: red;
-            margin-bottom: 10px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <?php if ($error): ?>
-            <div class="error"><?php echo $error; ?></div>
-        <?php endif; ?>
         <form method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
