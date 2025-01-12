@@ -70,12 +70,14 @@ try {
         .table-container {
             margin: 20px;
             text-align: center; /* Center the text */
+            position: relative;
         }
 
         .room-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            margin-top: 40px; /* Add margin to move the table lower */
         }
 
         .room-table th, .room-table td {
