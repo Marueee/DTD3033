@@ -1,6 +1,6 @@
 <?php
 include 'head.php';
-include 'auth/db_config.php';
+include '../auth/db_config.php';
 
 // Define valid room types
 $valid_room_types = ['King Room', 'Suite Room', 'Family Room', 'Deluxe Room', 'Luxury Room', 'Superior Room'];

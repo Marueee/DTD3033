@@ -1,6 +1,6 @@
 <?php
 include 'head.php';
-include 'auth/db_config.php';
+include '../auth/db_config.php';
 
 // Get sorting parameters
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'room_number';

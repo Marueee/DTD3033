@@ -1,6 +1,6 @@
 <?php
 include 'head.php';
-include 'auth/db_config.php';
+include '../auth/db_config.php';
 
 $error = '';
 $success = '';
