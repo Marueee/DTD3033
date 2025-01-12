@@ -21,7 +21,7 @@ if (isset($_POST['delete']) && isset($_POST['room_id'])) {
 if (isset($_POST['update']) && isset($_POST['room_id'])) {
     try {
         // Validate inputs
-        if (!isset($_POST['room_number'], $_POST['room_type'], $_POST['price_per_night'], $_POST['availability_status'])) {
+        if (!isset($_POST['room_number'], $_POST['room_type'], $_POST['price_per_night'], $_POST['status'])) {
             throw new Exception("All fields are required");
         }
 
@@ -31,13 +31,13 @@ if (isset($_POST['update']) && isset($_POST['room_id'])) {
         }
 
         // Use prepared statement
-        $stmt = $conn->prepare("UPDATE rooms SET room_number=?, room_type=?, price_per_night=?, availability_status=? WHERE room_id=?");
+        $stmt = $conn->prepare("UPDATE rooms SET room_number=?, room_type=?, price_per_night=?, status=? WHERE room_id=?");
         $stmt->bind_param(
             "ssdsi",
             $_POST['room_number'],
             $_POST['room_type'],
             $_POST['price_per_night'],
-            $_POST['availability_status'],
+            $_POST['status'],
             $_POST['room_id']
         );
         $stmt->execute();
@@ -201,12 +201,12 @@ try {
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        $statusClass = strtolower($row['availability_status']);
+                        $statusClass = strtolower($row['status']);
                         echo "<tr>";
                         echo "<td>" . $row['room_number'] . "</td>";
                         echo "<td>" . $row['room_type'] . "</td>";
                         echo "<td>RM " . number_format($row['price_per_night'], 2) . "</td>";
-                        echo "<td><span class='status " . $statusClass . "'>" . $row['availability_status'] . "</span></td>";
+                        echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
                         echo "<td>" . date('d M Y H:i', strtotime($row['updated_at'])) . "</td>";
                         echo "<td class='action-buttons'>
                                 <button class='edit-btn' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
@@ -247,7 +247,7 @@ try {
                 </div>
                 <div class="form-group">
                     <label>Status</label>
-                    <select name="availability_status" id="edit_status" required>
+                    <select name="status" id="edit_status" required>
                         <option value="available">Available</option>
                         <option value="occupied">Occupied</option>
                         <option value="maintenance">Maintenance</option>
@@ -272,7 +272,7 @@ try {
                     document.getElementById('edit_room_number').value = data.room_number;
                     document.getElementById('edit_room_type').value = data.room_type;
                     document.getElementById('edit_price').value = data.price_per_night;
-                    document.getElementById('edit_status').value = data.availability_status;
+                    document.getElementById('edit_status').value = data.status;
                 });
         }
 
