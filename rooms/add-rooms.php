@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             margin-bottom: 20px;
         }
         .back-btn {
-            margin: 20px;
+            margin: 10px;
             padding: 10px 20px;
             background-color: #6c757d;
             color: white;
@@ -94,17 +94,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             text-decoration: none;
             transition: background-color 0.3s ease;
             position: absolute;
-            left: 20px;
+            top: 10px;
+            left: 10px;
         }
         .back-btn:hover {
             background-color: #5a6268;
+        }
+        .center-text {
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
         <a href="rooms-admin.php" class="back-btn">Back</a>
-        <h2>Add New Room</h2>
+        <h2 class="center-text">Add New Room</h2>
         <?php if ($error): ?>
             <div class="error"><?php echo htmlspecialchars($error); ?></div>
         <?php endif; ?>
