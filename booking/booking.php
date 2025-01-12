@@ -70,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             VALUES ('$user_id', '$room_id', '$checkin', '$checkout', '$no_of_guest', '$total_price')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Reservation successful!";
+        header('Location: booking_complete.php');
+        exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
