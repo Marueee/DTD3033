@@ -18,12 +18,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch room types and prices
+// Fetch room types and availability
 $rooms = [];
-$result = $conn->query("SELECT room_id, room_type, price FROM rooms");
+$result = $conn->query("SELECT room_id, room_type, price, (SELECT COUNT(*) FROM reservations WHERE rooms.room_id = reservations.room_id AND checkin_date <= CURDATE() AND checkout_date >= CURDATE()) AS occupied FROM rooms");
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $rooms[] = $row;
+        if (!isset($rooms[$row['room_type']])) {
+            $rooms[$row['room_type']] = [
+                'room_id' => $row['room_id'],
+                'price' => $row['price'],
+                'occupied' => $row['occupied'],
+                'total' => 1
+            ];
+        } else {
+            $rooms[$row['room_type']]['total']++;
+            $rooms[$row['room_type']]['occupied'] += $row['occupied'];
+        }
     }
 }
 
@@ -102,8 +112,12 @@ $conn->close();
                                 <div class="form-group">
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
-                                        <?php foreach ($rooms as $room): ?>
-                                            <option value="<?php echo $room['room_id']; ?>"><?php echo $room['room_type']; ?> - $<?php echo $room['price']; ?>/night</option>
+                                        <?php foreach ($rooms as $room_type => $room): ?>
+                                            <?php if ($room['occupied'] < $room['total']): ?>
+                                                <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price']; ?>/night</option>
+                                            <?php else: ?>
+                                                <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
