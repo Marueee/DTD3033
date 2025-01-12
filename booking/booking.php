@@ -18,13 +18,33 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Fetch room types and prices
+$rooms = [];
+$result = $conn->query("SELECT room_id, room_type, price FROM rooms");
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $rooms[] = $row;
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_SESSION['user_id']; // Assuming user_id is stored in session
     $room_id = $_POST['room']; // Assuming room_id is selected from a dropdown
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
     $no_of_guest = $_POST['no_of_guest'];
-    $total_price = $_POST['total_price']; // Assuming total_price is calculated and submitted
+
+    // Fetch the price for the selected room
+    $result = $conn->query("SELECT price FROM rooms WHERE room_id = '$room_id'");
+    $room = $result->fetch_assoc();
+    $price_per_night = $room['price'];
+
+    // Calculate total price (assuming price is per night)
+    $checkin_date = new DateTime($checkin);
+    $checkout_date = new DateTime($checkout);
+    $interval = $checkin_date->diff($checkout_date);
+    $nights = $interval->days;
+    $total_price = $nights * $price_per_night * $no_of_guest;
 
     $sql = "INSERT INTO reservations (user_id, room_id, checkin_date, checkout_date, no_of_guest, total_price) 
             VALUES ('$user_id', '$room_id', '$checkin', '$checkout', '$no_of_guest', '$total_price')";
@@ -82,9 +102,9 @@ $conn->close();
                                 <div class="form-group">
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
-                                        <option value="1">Single</option>
-                                        <option value="2">Double</option>
-                                        <option value="3">Suite</option>
+                                        <?php foreach ($rooms as $room): ?>
+                                            <option value="<?php echo $room['room_id']; ?>"><?php echo $room['room_type']; ?> - $<?php echo $room['price']; ?>/night</option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -109,7 +129,7 @@ $conn->close();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="total_price">Total Price</label>
-                                    <input type="number" step="0.01" id="total_price" name="total_price" class="form-control" required>
+                                    <input type="number" step="0.01" id="total_price" name="total_price" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -147,5 +167,27 @@ $conn->close();
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="../js/google-map.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        document.getElementById('room').addEventListener('change', calculateTotalPrice);
+        document.getElementById('checkin').addEventListener('change', calculateTotalPrice);
+        document.getElementById('checkout').addEventListener('change', calculateTotalPrice);
+        document.getElementById('no_of_guest').addEventListener('change', calculateTotalPrice);
+
+        function calculateTotalPrice() {
+            const roomSelect = document.getElementById('room');
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const noOfGuest = document.getElementById('no_of_guest').value;
+
+            if (roomSelect.value && checkin && checkout && noOfGuest) {
+                const roomPrice = parseFloat(roomSelect.options[roomSelect.selectedIndex].text.split('- $')[1].split('/night')[0]);
+                const checkinDate = new Date(checkin);
+                const checkoutDate = new Date(checkout);
+                const nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+                const totalPrice = nights * roomPrice * noOfGuest;
+                document.getElementById('total_price').value = totalPrice.toFixed(2);
+            }
+        }
+    </script>
 </body>
 </html>
