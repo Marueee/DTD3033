@@ -11,7 +11,7 @@ $room_type_filter = isset($_GET['room_type']) ? $_GET['room_type'] : '';
 $valid_room_types = ['King Room', 'Suite Room', 'Family Room', 'Deluxe Room', 'Luxury Room', 'Superior Room'];
 
 // Validate sort column to prevent SQL injection
-$allowed_sort_columns = ['room_number', 'room_type', 'price_per_night', 'availability_status', 'updated_at'];
+$allowed_sort_columns = ['room_number', 'room_type', 'price_per_night', 'status', 'updated_at'];
 if (!in_array($sort, $allowed_sort_columns)) {
     $sort = 'room_number';
 }
@@ -248,8 +248,8 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
                     <th><a href="?sort=price_per_night&order=<?php echo ($sort === 'price_per_night') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
                         Price per Night (RM)<?php echo getSortIndicator('price_per_night', $sort, $order); ?>
                     </a></th>
-                    <th><a href="?sort=availability_status&order=<?php echo ($sort === 'availability_status') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
-                        Status<?php echo getSortIndicator('availability_status', $sort, $order); ?>
+                    <th><a href="?sort=status&order=<?php echo ($sort === 'status') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
+                        Status<?php echo getSortIndicator('status', $sort, $order); ?>
                     </a></th>
                     <th><a href="?sort=updated_at&order=<?php echo ($sort === 'updated_at') ? $new_order : 'ASC'; ?>&room_type=<?php echo urlencode($room_type_filter); ?>">
                         Last Updated<?php echo getSortIndicator('updated_at', $sort, $order); ?>
@@ -260,12 +260,12 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
                 <?php
                 if ($result && $result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        $statusClass = strtolower($row['availability_status']);
+                        $statusClass = strtolower($row['status']);
                         echo "<tr>";
                         echo "<td>".$row['room_number']."</td>";
                         echo "<td>".$row['room_type']."</td>";
                         echo "<td>RM ".number_format($row['price_per_night'], 2)."</td>";
-                        echo "<td><span class='status ".$statusClass."'>".$row['availability_status']."</span></td>";
+                        echo "<td><span class='status ".$statusClass."'>".$row['status']."</span></td>";
                         echo "<td>".date('d M Y H:i', strtotime($row['updated_at']))."</td>";
                         echo "</tr>";
                     }
