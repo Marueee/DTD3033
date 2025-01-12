@@ -10,13 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM test_users WHERE username = '$username'";
+    $query = "SELECT user_id, username, password FROM test_users WHERE username = '$username'";
     $result = $conn->query($query);
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['username'] = $username;
+            $_SESSION['user_id'] = $user['user_id'];
             $response['status'] = 'success';
             $response['message'] = 'Login successful! Redirecting...';
             echo json_encode($response);
