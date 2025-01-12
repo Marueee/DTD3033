@@ -116,7 +116,7 @@
 	</section>
 
 	<section class="button_click me">
-		<a href="booking/booking.php" ><button>Book a room</button></a>
+		<a href="booking/booking.php"><button>Book a room</button></a>
 	</section>
 
 	<section class="ftco-section">
@@ -183,7 +183,7 @@
 								<span class="ion-ios-bed"></span>
 							</div>
 						</div>
-						<div class="media-body" >
+						<div class="media-body">
 							<h3 class="heading mb-3">Cozy Rooms</h3>
 						</div>
 					</div>
