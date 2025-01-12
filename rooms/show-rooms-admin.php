@@ -67,6 +67,7 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
         }
         
         .room-table {
@@ -217,10 +218,29 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
         .search-form button:hover {
             background: #0056b3;
         }
+
+        .back-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            left: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
     </style>
 </head>
 <body>
     <div class="table-container">
+        <a href="rooms-admin.php" class="back-btn">Back</a>
         <h2>Room List</h2>
         <div class="search-container">
             <form method="GET" class="search-form">
