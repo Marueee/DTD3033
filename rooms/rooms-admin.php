@@ -125,7 +125,7 @@
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="show-rooms.php"><span class="flaticon-view"></span> Show Rooms</a></h3>
+							<h3 class="heading mb-3"><a href="show-rooms-admin.php"><span class="flaticon-view"></span> Show Rooms</a></h3>
 						</div>
 					</div>
 				</div>
