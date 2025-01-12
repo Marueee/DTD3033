@@ -145,8 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="../index.php">Home</a></span> <span>Booking</span></p>
-                    <h1 class="mb-0 bread">Hotel Booking</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="../index.php">Home</a></span> <span>Login</span></p>
+                    <h1 class="mb-0 bread">Login</h1>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 $.ajax({
                     type: 'POST',
-                    url: 'loginpab.php',
+                    url: 'logintest.php',
                     data: $(this).serialize(),
                     dataType: 'json',
                     success: function(response) {
@@ -233,27 +233,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="../js/google-map.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-        document.getElementById('room').addEventListener('change', calculateTotalPrice);
-        document.getElementById('checkin').addEventListener('change', calculateTotalPrice);
-        document.getElementById('checkout').addEventListener('change', calculateTotalPrice);
-        document.getElementById('no_of_guest').addEventListener('change', calculateTotalPrice);
-
-        function calculateTotalPrice() {
-            const roomSelect = document.getElementById('room');
-            const checkin = document.getElementById('checkin').value;
-            const checkout = document.getElementById('checkout').value;
-            const noOfGuest = document.getElementById('no_of_guest').value;
-
-            if (roomSelect.value && checkin && checkout && noOfGuest) {
-                const roomPrice = parseFloat(roomSelect.options[roomSelect.selectedIndex].text.split('- $')[1].split('/night')[0]);
-                const checkinDate = new Date(checkin);
-                const checkoutDate = new Date(checkout);
-                const nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
-                const totalPrice = nights * roomPrice * noOfGuest;
-                document.getElementById('total_price').value = totalPrice.toFixed(2);
-            }
-        }
-    </script>
 </body>
 </html>
