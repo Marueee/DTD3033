@@ -5,6 +5,10 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $servername = "localhost";
 $username = "haikal";
 $password = "haikal03";
