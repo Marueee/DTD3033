@@ -19,18 +19,18 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $room = $_POST['room'];
+    $user_id = $_SESSION['user_id']; // Assuming user_id is stored in session
+    $room_id = $_POST['room']; // Assuming room_id is selected from a dropdown
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
+    $no_of_guest = $_POST['no_of_guest'];
+    $total_price = $_POST['total_price']; // Assuming total_price is calculated and submitted
 
-    $sql = "INSERT INTO registrations (name, email, phone, room_type, checkin_date, checkout_date) 
-            VALUES ('$name', '$email', '$phone', '$room', '$checkin', '$checkout')";
+    $sql = "INSERT INTO reservations (user_id, room_id, checkin_date, checkout_date, no_of_guest, total_price) 
+            VALUES ('$user_id', '$room_id', '$checkin', '$checkout', '$no_of_guest', '$total_price')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Registration successful!";
+        echo "Reservation successful!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -80,29 +80,11 @@ $conn->close();
                         <div class="row align-items-end">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" id="name" name="name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="text" id="phone" name="phone" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
-                                        <option value="single">Single</option>
-                                        <option value="double">Double</option>
-                                        <option value="suite">Suite</option>
+                                        <option value="1">Single</option>
+                                        <option value="2">Double</option>
+                                        <option value="3">Suite</option>
                                     </select>
                                 </div>
                             </div>
@@ -116,6 +98,18 @@ $conn->close();
                                 <div class="form-group">
                                     <label for="checkout">Check-Out Date</label>
                                     <input type="date" id="checkout" name="checkout" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="no_of_guest">Number of Guests</label>
+                                    <input type="number" id="no_of_guest" name="no_of_guest" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="total_price">Total Price</label>
+                                    <input type="number" step="0.01" id="total_price" name="total_price" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
