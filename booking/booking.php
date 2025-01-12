@@ -71,12 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO reservations (user_id, room_id, checkin_date, checkout_date, no_of_guest, total_price) 
             VALUES ('$user_id', '$room_id', '$checkin', '$checkout', '$no_of_guest', '$total_price')";
     if ($conn->query($sql) === TRUE) {
-        // Update room status to booked
-        $update_sql = "UPDATE rooms SET status = 'booked' WHERE room_id = '$room_id'";
-        $conn->query($update_sql);
-
-        header('Location: booking_complete.php');
-        exit();
+        // Update room status to occupied
+        $update_sql = "UPDATE rooms SET status = 'occupied' WHERE room_id = '$room_id'";
+        if ($conn->query($update_sql) === TRUE) {
+            header('Location: booking_complete.php');
+            exit();
+        } else {
+            echo "Error updating room status: " . $conn->error;
+        }
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -129,7 +131,7 @@ $conn->close();
                                     <label for="room">Room Type</label>
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
-                                            <?php if ($room['occupied'] < $room['total'] && $room['status'] != 'booked'): ?>
+                                            <?php if ($room['occupied'] < $room['total'] && $room['status'] != 'occupied'): ?>
                                                 <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
