@@ -204,7 +204,7 @@
 						<span class="subheading">About La Passion Hotel</span>
 						<h2 class="mb-4">La Passion Hotel the Most Recommended Hotel All Over the World</h2>
 					</div>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+					<p>La Passion Hotel combines elegance, comfort, and exceptional service to create an unforgettable stay for every guest. Nestled in a prime location, our hotel offers the perfect balance of tranquility and accessibility, making it an ideal destination for both leisure and business travelers.</p>
 					<p><a href="rooms.php" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
 				</div>
 			</div>
@@ -227,7 +227,7 @@
 							<div class="item">
 								<div class="testimony-wrap pb-4">
 									<div class="text">
-										<p class="mb-4">While the staff was polite and helpful, the room service took longer than expected, and the Wi-Fi connection was inconsistent. Fixing these issues would make this hotel perfect!</p>
+										<p class="mb-4">The family room was spacious and comfortable, and the kids loved the pool! The hotel staff made us feel so welcome, and the location was ideal for exploring the city.</p>
 									</div>
 									<div class="d-flex">
 										<div class="user-img" style="background-image: url(images/person_1.jpg)">
@@ -242,7 +242,7 @@
 							<div class="item">
 								<div class="testimony-wrap pb-4">
 									<div class="text">
-										<p class="mb-4">Relaxing places to disconnect you from any problems.</p>
+										<p class="mb-4">As a frequent traveler, I was impressed by how seamless everything was—great Wi-Fi, comfortable workspaces, and a peaceful environment. Highly recommended for business trips!</p>
 									</div>
 									<div class="d-flex">
 										<div class="user-img" style="background-image: url(images/person_5.jpg)">
@@ -260,7 +260,7 @@
 										<p class="mb-4">While the staff was polite and helpful, the room service took longer than expected, and the Wi-Fi connection was inconsistent. Fixing these issues would make this hotel perfect!</p>
 									</div>
 									<div class="d-flex">
-										<div class="user-img" style="background-image: url(images/person_3.jpg)">
+										<div class="user-img" style="background-image: url(images/Person_3.jpeg)">
 										</div>
 										<div class="pos ml-3">
 											<p class="name">Jamal Trevor</p>
@@ -290,255 +290,6 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- <section class="ftco-section ftco-no-pb ftco-room">
-		<div class="container-fluid px-0">
-			<div class="row no-gutters justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">La Passion Rooms</span>
-					<h2 class="mb-4">Hotel Master's Rooms</h2>
-				</div>
-			</div>
-			<div class="row no-gutters">
-				<div class="col-lg-6">
-					<div class="room-wrap d-md-flex ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/room-6.jpg);"></a>
-						<div class="half left-arrow d-flex align-items-center">
-							<div class="text p-4 text-center">
-								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-								<h3 class="mb-3"><a href="rooms.html">King Room</a></h3>
-								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="room-wrap d-md-flex ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/room-1.jpg);"></a>
-						<div class="half left-arrow d-flex align-items-center">
-							<div class="text p-4 text-center">
-								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-								<h3 class="mb-3"><a href="rooms.html">Suite Room</a></h3>
-								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="room-wrap d-md-flex ftco-animate">
-						<a href="#" class="img order-md-last" style="background-image: url(images/room-2.jpg);"></a>
-						<div class="half right-arrow d-flex align-items-center">
-							<div class="text p-4 text-center">
-								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-								<h3 class="mb-3"><a href="rooms.html">Family Room</a></h3>
-								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="room-wrap d-md-flex ftco-animate">
-						<a href="#" class="img order-md-last" style="background-image: url(images/room-3.jpg);"></a>
-						<div class="half right-arrow d-flex align-items-center">
-							<div class="text p-4 text-center">
-								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-								<h3 class="mb-3"><a href="rooms.html">Deluxe Room</a></h3>
-								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="room-wrap d-md-flex ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/room-4.jpg);"></a>
-						<div class="half left-arrow d-flex align-items-center">
-							<div class="text p-4 text-center">
-								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-								<h3 class="mb-3"><a href="rooms.html">Luxury Room</a></h3>
-								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="room-wrap d-md-flex ftco-animate">
-						<a href="#" class="img" style="background-image: url(images/room-5.jpg);"></a>
-						<div class="half left-arrow d-flex align-items-center">
-							<div class="text p-4 text-center">
-								<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
-								<p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p>
-								<h3 class="mb-3"><a href="rooms.html">Superior Room</a></h3>
-								<p class="pt-1"><a href="rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
-	<!-- <section class="ftco-section ftco-menu bg-light">
-		<div class="container-fluid px-md-4">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Restaurant</span>
-					<h2>Restaurant</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-6 col-xl-4 d-flex">
-					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-1.jpg);"></div>
-						<div class="desc p-4">
-							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
-							</div>
-							<div class="d-block">
-								<p>A small river named Muallim flows by their place and supplies</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 d-flex">
-					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-2.jpg);"></div>
-						<div class="desc p-4">
-							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
-							</div>
-							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 d-flex">
-					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-3.jpg);"></div>
-						<div class="desc p-4">
-							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
-							</div>
-							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 d-flex">
-					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-4.jpg);"></div>
-						<div class="desc p-4">
-							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
-							</div>
-							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 d-flex">
-					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-5.jpg);"></div>
-						<div class="desc p-4">
-							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
-							</div>
-							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-xl-4 d-flex">
-					<div class="pricing-entry rounded d-flex ftco-animate">
-						<div class="img" style="background-image: url(images/menu-6.jpg);"></div>
-						<div class="desc p-4">
-							<div class="d-md-flex text align-items-start">
-								<h3><span>Grilled Crab with Onion</span></h3>
-								<span class="price">$20.00</span>
-							</div>
-							<div class="d-block">
-								<p>A small river named Duden flows by their place and supplies</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12 text-center ftco-animate">
-					<p><a href="#" class="btn btn-primary rounded">View All Menu</a></p>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
-
-	<!-- <section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Read Blog</span>
-					<h2>Recent Blog</h2>
-				</div>
-			</div>
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
-						</a>
-						<div class="text mt-3 text-center">
-							<div class="meta mb-2">
-								<div><a href="#">Oct. 30, 2019</a></div>
-								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-							</div>
-							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
-						</a>
-						<div class="text mt-3 text-center">
-							<div class="meta mb-2">
-								<div><a href="#">Oct. 30, 2019</a></div>
-								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-							</div>
-							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
-						</a>
-						<div class="text mt-3 text-center">
-							<div class="meta mb-2">
-								<div><a href="#">Oct. 30, 2019</a></div>
-								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-							</div>
-							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
 
 	<section class="instagram">
 		<div class="container-fluid">

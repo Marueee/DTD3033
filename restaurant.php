@@ -46,8 +46,8 @@
 						<span class="subheading">About La Passion Hotel</span>
 						<h2 class="mb-4">La Passion Hotel Restaurants</h2>
 					</div>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					<p>Our hotel restaurant serves a variety of local and international cuisines, prepared with fresh, high-quality ingredients to delight every palate. </p>
+					<p>The elegant ambiance and attentive service create a perfect dining experience for casual meals, celebrations, or business gatherings.</p>
 					<p><a href="#" class="btn btn-secondary rounded">More info</a></p>
 				</div>
 			</div>
@@ -195,7 +195,7 @@
 		</div>
 	</section>
 
-
+	<?php include 'footer.php'; ?>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">

@@ -4,8 +4,10 @@
 	<?php include 'head.php';?>
   </head>
   <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	
+  <?php include 'navbar.php'; ?>
+	
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index.php">La<span>Passion</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,16 +17,16 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-	          <li class="nav-item active"><a href="rooms.php" class="nav-link">Our Rooms</a></li>
-	          <li class="nav-item"><a href="restaurant.html" class="nav-link">Restaurant</a></li>
+	          <li class="nav-item active"><a href="rooms.php" class="nav-link">Rooms</a></li>
+	          <li class="nav-item"><a href="restaurant.php" class="nav-link">Restaurant</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
-	  </nav>
-    <!-- END nav -->
+	</nav> -->
+	 
 		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
       <div class="overlay"></div>
       <div class="container">
