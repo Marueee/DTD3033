@@ -9,8 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
 
-    $query = "SELECT user_id, username, password, role FROM users WHERE username = '$username'";
-    $result = $conn->query($query);
+    $query = "SELECT user_id, username, password, role FROM users WHERE username = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
@@ -133,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 $.ajax({
                     type: 'POST',
-                    url: 'logintest.php',
+                    url: 'logins.php',
                     data: $(this).serialize(),
                     dataType: 'json',
                     success: function(response) {
