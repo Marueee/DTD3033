@@ -218,7 +218,7 @@ try {
 
 <body>
     <div class="table-container">
-        <a href="../admin-index.php" class="back-btn">Back</a>
+        <a href="booking-admin.php" class="back-btn">Back</a>
         <h2>Manage Reservations</h2>
         <table class="booking-table">
             <thead>
