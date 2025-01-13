@@ -21,6 +21,7 @@
 						<a class="dropdown-item" href="profile.php">My Profile</a>
 						<a class="dropdown-item" href="login/logins.php">Login</a>
 						<a class="dropdown-item" href="register/registers.php">Register</a>
+						<a class="dropdown-item" href="login/logout.php">Logout</a>
 					</div>
 				</li>
 			</ul>
