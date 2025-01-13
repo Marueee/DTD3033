@@ -137,7 +137,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="manage-bookings.php"><span class="flaticon-booking"></span> Manage Bookings</a></h3>
+							<h3 class="heading mb-3"><a href="booking/booking-admin.php"><span class="flaticon-booking"></span> Manage Bookings</a></h3>
 						</div>
 					</div>
 				</div>
