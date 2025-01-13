@@ -9,7 +9,7 @@ include 'auth/db_config.php';
 
 // Fetch user details
 $user_id = $_SESSION['user_id'];
-$query = "SELECT username, email FROM users WHERE user_id = ?";
+$query = "SELECT username FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $user_id);
 $stmt->execute();
@@ -70,12 +70,6 @@ $bookings_result = $stmt->get_result();
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" id="username" class="form-control" value="<?php echo $user['username']; ?>" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" value="<?php echo $user['email']; ?>" readonly>
                             </div>
                         </div>
                     </div>
