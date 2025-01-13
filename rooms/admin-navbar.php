@@ -13,10 +13,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
 				<a class="nav-link" href="../admin-index.php">Dashboard</a>
 			</li>
 			<li class="nav-item <?php echo ($current_page == 'rooms-admin.php' || $current_page == 'add-rooms.php' || $current_page == 'edit-room.php' || $current_page == 'show-rooms-admin.php') ? 'active' : ''; ?>">
-				<a class="nav-link" href="../rooms/rooms-admin.php">Manage Rooms</a>
+				<a class="nav-link" href="rooms-admin.php">Manage Rooms</a>
 			</li>
 			<li class="nav-item <?php echo ($current_page == 'booking-admin.php' || $current_page == 'view-booking.php' || $current_page == 'edit-booking.php') ? 'active' : ''; ?>">
-				<a class="nav-link" href="booking-admin.php">Manage Bookings</a>
+				<a class="nav-link" href="../booking-admin.php">Manage Bookings</a>
 			</li>
 			<li class="nav-item <?php echo ($current_page == 'settings.php') ? 'active' : ''; ?>">
 				<a class="nav-link" href="settings.php">Settings</a>
