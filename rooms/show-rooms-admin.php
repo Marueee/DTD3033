@@ -57,7 +57,7 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include '../admin-navbar.php'; ?>
+<?php include 'admin-navbar.php'; ?>
     <title>Room List</title>
     <style>
         .table-container {

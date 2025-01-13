@@ -50,7 +50,7 @@
 
 <body>
 
-	<?php include '../admin-navbar.php'; ?>
+	<?php include 'admin-navbar.php'; ?>
 
 	<div class="admin-hero">
 		<section class="admin-home-slider owl-carousel">

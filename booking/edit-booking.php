@@ -1,5 +1,5 @@
 <?php
-include '../head.php';
+include 'head.php';
 include '../auth/db_config.php';
 
 // Handle Update
@@ -48,7 +48,7 @@ try {
 <html lang="en">
 
 <head>
-    <?php include '../admin-navbar.php'; ?>
+    <?php include 'admin-navbar.php'; ?>
     <title>Edit Reservation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>

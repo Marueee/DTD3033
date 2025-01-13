@@ -2,9 +2,11 @@
 include 'head.php';
 include '../auth/db_config.php';
 
+$result = null; // Initialize the result variable
+
 // Fetch all reservations using prepared statement
 try {
-    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.status 
+    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.reservation_status AS status 
               FROM reservations 
               JOIN users ON reservations.user_id = users.user_id 
               JOIN rooms ON reservations.room_id = rooms.room_id 
@@ -22,7 +24,7 @@ try {
 <html lang="en">
 
 <head>
-    <?php include '../admin-navbar.php'; ?>
+    <?php include 'admin-navbar.php'; ?>
     <title>View Reservations</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -107,7 +109,7 @@ try {
             </thead>
             <tbody>
                 <?php
-                if ($result->num_rows > 0) {
+                if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['status']);
                         echo "<tr>";
