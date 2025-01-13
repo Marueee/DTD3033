@@ -9,21 +9,41 @@
 			color: #fff !important;
 			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 		}
-		/* Add icons inside the circles */
+		/* Add icons without circles */
 		.media .icon {
 			position: relative !important;
 			width: 60px !important;
 			height: 60px !important;
-			border-radius: 50% !important;
-			background: #f96d00 !important;
-			color: #fff !important;
+			background: transparent !important;
+			color: #000 !important;
 			font-size: 24px !important;
 			display: flex !important;
 			align-items: center !important;
 			justify-content: center !important;
+			border-radius: 0 !important;
 		}
 		.media .icon span {
 			position: absolute !important;
+		}
+		/* Change text color on hover */
+		.media .icon:hover {
+			color: #fff !important;
+		}
+		/* Ensure link text color changes on hover */
+		.media .heading a:hover {
+			color: #fff !important;
+		}
+		/* Ensure link text color changes on hover for specific links */
+		.media .heading a:hover span {
+			color: #fff !important;
+		}
+		/* Ensure the text color changes to white when hovering over the square */
+		.media:hover .heading a {
+			color: #fff !important;
+		}
+		/* Ensure the text color changes to white when hovering over the square */
+		.media:hover .icon {
+			color: #fff !important;
 		}
 	</style>
 </head>
