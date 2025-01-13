@@ -25,6 +25,7 @@ if (session_status() == PHP_SESSION_NONE) {
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
 						<?php if (isset($_SESSION['username'])): ?>
 							<a class="dropdown-item" href="profile.php">My Profile</a>
+							<a class="dropdown-item" href="reservation.php">My Reservations</a>
 							<a class="dropdown-item" href="login/logout.php">Logout</a>
 						<?php else: ?>
 							<a class="dropdown-item" href="login/logins.php">Login</a>
