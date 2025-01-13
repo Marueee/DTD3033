@@ -18,10 +18,13 @@
 						<i class="fas fa-user"></i> Profile
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-						<a class="dropdown-item" href="profile.php">My Profile</a>
-						<a class="dropdown-item" href="login/logins.php">Login</a>
-						<a class="dropdown-item" href="register/registers.php">Register</a>
-						<a class="dropdown-item" href="login/logout.php">Logout</a>
+						<?php if (isset($_SESSION['username'])): ?>
+							<a class="dropdown-item" href="profile.php">My Profile</a>
+							<a class="dropdown-item" href="login/logout.php">Logout</a>
+						<?php else: ?>
+							<a class="dropdown-item" href="login/logins.php">Login</a>
+							<a class="dropdown-item" href="register/registers.php">Register</a>
+						<?php endif; ?>
 					</div>
 				</li>
 			</ul>
