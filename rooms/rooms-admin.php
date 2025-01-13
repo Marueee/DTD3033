@@ -1,3 +1,14 @@
+<?php
+include 'head.php';
+include '../auth/db_config.php';
+
+// Check if user is logged in and has admin role
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: ../login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -2,6 +2,12 @@
 include 'head.php';
 include '../auth/db_config.php';
 
+// Check if user is logged in and has admin role
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header('Location: ../login.php');
+    exit();
+}
 $result = null; // Initialize the result variable
 
 // Fetch all reservations using prepared statement
