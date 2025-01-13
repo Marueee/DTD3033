@@ -1,15 +1,20 @@
 <?php
-include '../head.php';
+include 'head.php';
 include '../auth/db_config.php';
 
-// Fetch all bookings using prepared statement
+// Fetch all reservations using prepared statement
 try {
-    $stmt = $conn->prepare("SELECT * FROM bookings ORDER BY booking_id");
+    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.status 
+              FROM reservations 
+              JOIN users ON reservations.user_id = users.user_id 
+              JOIN rooms ON reservations.room_id = rooms.room_id 
+              ORDER BY reservations.reservation_id";
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
 } catch (Exception $e) {
-    echo "Error fetching bookings: " . $e->getMessage();
+    echo "Error fetching reservations: " . $e->getMessage();
 }
 ?>
 
@@ -18,7 +23,7 @@ try {
 
 <head>
     <?php include '../admin-navbar.php'; ?>
-    <title>View Bookings</title>
+    <title>View Reservations</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .table-container {
@@ -88,11 +93,11 @@ try {
 <body>
     <div class="table-container">
         <a href="../admin-index.php" class="back-btn">Back</a>
-        <h2>View Bookings</h2>
+        <h2>View Reservations</h2>
         <table class="booking-table">
             <thead>
                 <tr>
-                    <th>Booking ID</th>
+                    <th>Reservation ID</th>
                     <th>Customer Name</th>
                     <th>Room Number</th>
                     <th>Check-in Date</th>
@@ -106,16 +111,16 @@ try {
                     while ($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['status']);
                         echo "<tr>";
-                        echo "<td>" . $row['booking_id'] . "</td>";
+                        echo "<td>" . $row['reservation_id'] . "</td>";
                         echo "<td>" . $row['customer_name'] . "</td>";
                         echo "<td>" . $row['room_number'] . "</td>";
-                        echo "<td>" . date('d M Y', strtotime($row['check_in_date'])) . "</td>";
-                        echo "<td>" . date('d M Y', strtotime($row['check_out_date'])) . "</td>";
+                        echo "<td>" . date('d M Y', strtotime($row['checkin_date'])) . "</td>";
+                        echo "<td>" . date('d M Y', strtotime($row['checkout_date'])) . "</td>";
                         echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6' style='text-align: center;'>No bookings found</td></tr>";
+                    echo "<tr><td colspan='6' style='text-align: center;'>No reservations found</td></tr>";
                 }
                 ?>
             </tbody>

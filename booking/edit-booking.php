@@ -3,39 +3,44 @@ include '../head.php';
 include '../auth/db_config.php';
 
 // Handle Update
-if (isset($_POST['update']) && isset($_POST['booking_id'])) {
+if (isset($_POST['update']) && isset($_POST['reservation_id'])) {
     try {
         // Validate inputs
-        if (!isset($_POST['customer_name'], $_POST['room_number'], $_POST['check_in_date'], $_POST['check_out_date'], $_POST['status'])) {
+        if (!isset($_POST['customer_name'], $_POST['room_number'], $_POST['checkin_date'], $_POST['checkout_date'], $_POST['status'])) {
             throw new Exception("All fields are required");
         }
 
         // Use prepared statement
-        $stmt = $conn->prepare("UPDATE bookings SET customer_name=?, room_number=?, check_in_date=?, check_out_date=?, status=? WHERE booking_id=?");
+        $stmt = $conn->prepare("UPDATE reservations SET customer_name=?, room_number=?, checkin_date=?, checkout_date=?, status=? WHERE reservation_id=?");
         $stmt->bind_param(
             "sssssi",
             $_POST['customer_name'],
             $_POST['room_number'],
-            $_POST['check_in_date'],
-            $_POST['check_out_date'],
+            $_POST['checkin_date'],
+            $_POST['checkout_date'],
             $_POST['status'],
-            $_POST['booking_id']
+            $_POST['reservation_id']
         );
         $stmt->execute();
         $stmt->close();
     } catch (Exception $e) {
-        echo "Error updating booking: " . $e->getMessage();
+        echo "Error updating reservation: " . $e->getMessage();
     }
 }
 
-// Fetch all bookings using prepared statement
+// Fetch all reservations using prepared statement
 try {
-    $stmt = $conn->prepare("SELECT * FROM bookings ORDER BY booking_id");
+    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.status 
+              FROM reservations 
+              JOIN users ON reservations.user_id = users.user_id 
+              JOIN rooms ON reservations.room_id = rooms.room_id 
+              ORDER BY reservations.reservation_id";
+    $stmt = $conn->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
 } catch (Exception $e) {
-    echo "Error fetching bookings: " . $e->getMessage();
+    echo "Error fetching reservations: " . $e->getMessage();
 }
 ?>
 
@@ -44,7 +49,7 @@ try {
 
 <head>
     <?php include '../admin-navbar.php'; ?>
-    <title>Edit Booking</title>
+    <title>Edit Reservation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .table-container {
@@ -214,11 +219,11 @@ try {
 <body>
     <div class="table-container">
         <a href="../admin-index.php" class="back-btn">Back</a>
-        <h2>Manage Bookings</h2>
+        <h2>Manage Reservations</h2>
         <table class="booking-table">
             <thead>
                 <tr>
-                    <th>Booking ID</th>
+                    <th>Reservation ID</th>
                     <th>Customer Name</th>
                     <th>Room Number</th>
                     <th>Check-in Date</th>
@@ -233,15 +238,15 @@ try {
                     while ($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['status']);
                         echo "<tr>";
-                        echo "<td>" . $row['booking_id'] . "</td>";
+                        echo "<td>" . $row['reservation_id'] . "</td>";
                         echo "<td>" . $row['customer_name'] . "</td>";
                         echo "<td>" . $row['room_number'] . "</td>";
-                        echo "<td>" . date('d M Y', strtotime($row['check_in_date'])) . "</td>";
-                        echo "<td>" . date('d M Y', strtotime($row['check_out_date'])) . "</td>";
+                        echo "<td>" . date('d M Y', strtotime($row['checkin_date'])) . "</td>";
+                        echo "<td>" . date('d M Y', strtotime($row['checkout_date'])) . "</td>";
                         echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
                         echo "<td class='action-buttons'>
-                                <button class='edit-btn' onclick='editBooking(" . $row['booking_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
-                                <button class='delete-btn' onclick='deleteBooking(" . $row['booking_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
+                                <button class='edit-btn' onclick='editReservation(" . $row['reservation_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
+                                <button class='delete-btn' onclick='deleteReservation(" . $row['reservation_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
                               </td>";
                         echo "</tr>";
                     }
@@ -254,9 +259,9 @@ try {
     <!-- Edit Modal -->
     <div id="editModal" class="modal">
         <div class="modal-content">
-            <h3>Edit Booking</h3>
+            <h3>Edit Reservation</h3>
             <form id="editForm" method="POST">
-                <input type="hidden" name="booking_id" id="edit_booking_id">
+                <input type="hidden" name="reservation_id" id="edit_reservation_id">
                 <div class="form-group">
                     <label>Customer Name</label>
                     <input type="text" name="customer_name" id="edit_customer_name" required>
@@ -267,11 +272,11 @@ try {
                 </div>
                 <div class="form-group">
                     <label>Check-in Date</label>
-                    <input type="date" name="check_in_date" id="edit_check_in_date" required>
+                    <input type="date" name="checkin_date" id="edit_checkin_date" required>
                 </div>
                 <div class="form-group">
                     <label>Check-out Date</label>
-                    <input type="date" name="check_out_date" id="edit_check_out_date" required>
+                    <input type="date" name="checkout_date" id="edit_checkout_date" required>
                 </div>
                 <div class="form-group">
                     <label>Status</label>
@@ -281,35 +286,35 @@ try {
                         <option value="cancelled">Cancelled</option>
                     </select>
                 </div>
-                <button type="submit" name="update" class="submit-btn">Update Booking</button>
+                <button type="submit" name="update" class="submit-btn">Update Reservation</button>
                 <button type="button" onclick="closeModal()" class="submit-btn">Cancel</button>
             </form>
         </div>
     </div>
 
     <script>
-        function editBooking(bookingId) {
+        function editReservation(reservationId) {
             // Show modal
             document.getElementById('editModal').classList.add('show');
-            document.getElementById('edit_booking_id').value = bookingId;
+            document.getElementById('edit_reservation_id').value = reservationId;
 
-            // Fetch booking data via AJAX
-            fetch(`get_booking.php?id=${bookingId}`)
+            // Fetch reservation data via AJAX
+            fetch(`get_reservation.php?id=${reservationId}`)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('edit_customer_name').value = data.customer_name;
                     document.getElementById('edit_room_number').value = data.room_number;
-                    document.getElementById('edit_check_in_date').value = data.check_in_date;
-                    document.getElementById('edit_check_out_date').value = data.check_out_date;
+                    document.getElementById('edit_checkin_date').value = data.checkin_date;
+                    document.getElementById('edit_checkout_date').value = data.checkout_date;
                     document.getElementById('edit_status').value = data.status;
                 });
         }
 
-        function deleteBooking(bookingId) {
-            if (confirm('Are you sure you want to delete this booking?')) {
+        function deleteReservation(reservationId) {
+            if (confirm('Are you sure you want to delete this reservation?')) {
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.innerHTML = `<input name="delete" value="1"><input name="booking_id" value="${bookingId}">`;
+                form.innerHTML = `<input name="delete" value="1"><input name="reservation_id" value="${reservationId}">`;
                 document.body.appendChild(form);
                 form.submit();
             }
