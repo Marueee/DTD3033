@@ -16,17 +16,6 @@ $stmt->execute();
 $user_result = $stmt->get_result();
 $user = $user_result->fetch_assoc();
 
-// Fetch user bookings
-$booking_query = "SELECT rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.total_price, reservations.reservation_status 
-                  FROM reservations 
-                  JOIN rooms ON reservations.room_id = rooms.room_id 
-                  WHERE reservations.user_id = ? 
-                  ORDER BY reservations.checkin_date DESC";
-$stmt = $conn->prepare($booking_query);
-$stmt->bind_param('i', $user_id);
-$stmt->execute();
-$bookings_result = $stmt->get_result();
-
 // Handle profile update
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
     $username = $_POST['username'];
@@ -113,35 +102,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
                             </div>
                         </div>
                     </form>
-                    <h3 class="mb-4 mt-5">My Bookings</h3>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Room Number</th>
-                                <th>Check-in Date</th>
-                                <th>Check-out Date</th>
-                                <th>Total Price</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            if ($bookings_result->num_rows > 0) {
-                                while ($booking = $bookings_result->fetch_assoc()) {
-                                    echo "<tr>";
-                                    echo "<td>" . $booking['room_number'] . "</td>";
-                                    echo "<td>" . date('d M Y', strtotime($booking['checkin_date'])) . "</td>";
-                                    echo "<td>" . date('d M Y', strtotime($booking['checkout_date'])) . "</td>";
-                                    echo "<td>RM" . $booking['total_price'] . "</td>";
-                                    echo "<td>" . ucfirst($booking['reservation_status']) . "</td>";
-                                    echo "</tr>";
-                                }
-                            } else {
-                                echo "<tr><td colspan='5'>No bookings found.</td></tr>";
-                            }
-                            ?>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
