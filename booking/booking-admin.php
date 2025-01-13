@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<?php include '../head.php'; ?>
+	<?php include 'head.php'; ?>
 	<style>
 		/* Improve visibility */
 		.admin-hero .text h1, .admin-hero .text h2 {
