@@ -11,7 +11,7 @@ if (isset($_POST['update']) && isset($_POST['reservation_id'])) {
         }
 
         // Use prepared statement
-        $stmt = $conn->prepare("UPDATE reservations SET customer_name=?, room_number=?, checkin_date=?, checkout_date=?, status=? WHERE reservation_id=?");
+        $stmt = $conn->prepare("UPDATE reservations SET customer_name=?, room_number=?, checkin_date=?, checkout_date=?, reservation_status=? WHERE reservation_id=?");
         $stmt->bind_param(
             "sssssi",
             $_POST['customer_name'],
@@ -30,7 +30,7 @@ if (isset($_POST['update']) && isset($_POST['reservation_id'])) {
 
 // Fetch all reservations using prepared statement
 try {
-    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.status 
+    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.reservation_status AS status 
               FROM reservations 
               JOIN users ON reservations.user_id = users.user_id 
               JOIN rooms ON reservations.room_id = rooms.room_id 
