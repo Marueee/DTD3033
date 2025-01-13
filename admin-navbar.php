@@ -12,7 +12,7 @@
 				<a class="nav-link" href="rooms/rooms-admin.php">Manage Rooms</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="manage-bookings.php">Manage Bookings</a>
+				<a class="nav-link" href="booking/booking-admin.php">Manage Bookings</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="settings.php">Settings</a>
