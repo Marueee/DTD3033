@@ -15,7 +15,7 @@
 				<a class="nav-link" href="booking/booking-admin.php">Manage Bookings</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="settings.php">Settings</a>
+				<a class="nav-link" href="login/logout.php">Logout</a>
 			</li>
 		</ul>
 	</div>

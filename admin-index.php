@@ -149,7 +149,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 							</div>
 						</div>
 						<div class="media-body">
-							<h3 class="heading mb-3"><a href="settings.php"><span class="flaticon-settings"></span> Settings</a></h3>
+							<h3 class="heading mb-3"><a href="login/logout.php"><span class="flaticon-settings"></span> Logout </a></h3>
 						</div>
 					</div>
 				</div>

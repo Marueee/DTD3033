@@ -19,7 +19,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 				<a class="nav-link" href="../booking/booking-admin.php">Manage Bookings</a>
 			</li>
 			<li class="nav-item <?php echo ($current_page == 'settings.php') ? 'active' : ''; ?>">
-				<a class="nav-link" href="settings.php">Settings</a>
+				<a class="nav-link" href="login/logout.php">Logout</a>
 			</li>
 		</ul>
 	</div>
