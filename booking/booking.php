@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkout_date = new DateTime($checkout);
     $interval = $checkin_date->diff($checkout_date);
     $nights = $interval->days;
-    $total_price = $nights * $price_per_night * $no_of_guest;
+    $total_price = $nights * $price_per_night;
 
     // Insert reservation
     $sql = "INSERT INTO reservations (user_id, room_id, checkin_date, checkout_date, no_of_guest, total_price) 
@@ -230,11 +230,11 @@ $conn->close();
             const noOfGuest = document.getElementById('no_of_guest').value;
 
             if (roomSelect.value && checkin && checkout && noOfGuest) {
-                const roomPrice = parseFloat(roomSelect.options[roomSelect.selectedIndex].text.split('- $')[1].split('/night')[0]);
+                const roomPrice = parseFloat(roomSelect.options[roomSelect.selectedIndex].text.split('RM')[1].split('/night')[0]);
                 const checkinDate = new Date(checkin);
                 const checkoutDate = new Date(checkout);
                 const nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
-                const totalPrice = nights * roomPrice * noOfGuest;
+                const totalPrice = nights * roomPrice;
                 document.getElementById('total_price').value = totalPrice.toFixed(2);
             }
         }
