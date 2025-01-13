@@ -1,4 +1,3 @@
-@ -1,244 +1,244 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
@@ -84,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $checkout_date = new DateTime($checkout);
     $interval = $checkin_date->diff($checkout_date);
     $nights = $interval->days;
-    $total_price = $nights * $price_per_night * $no_of_guest;
+    $total_price = $nights * $price_per_night;
 
     // Insert reservation
     $sql = "INSERT INTO reservations (user_id, room_id, checkin_date, checkout_date, no_of_guest, total_price) 
@@ -151,7 +150,6 @@ $conn->close();
                                     <select id="room" name="room" class="form-control">
                                         <?php foreach ($rooms as $room_type => $room): ?>
                                             <?php if ($room['occupied'] < $room['total']): ?>
-                                                <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - $<?php echo $room['price_per_night']; ?>/night</option>
                                                 <option value="<?php echo $room['room_id']; ?>"><?php echo $room_type; ?> - RM<?php echo $room['price_per_night']; ?>/night</option>
                                             <?php else: ?>
                                                 <option value="" disabled><?php echo $room_type; ?> - Out of room</option>
@@ -223,20 +221,18 @@ $conn->close();
         document.getElementById('room').addEventListener('change', calculateTotalPrice);
         document.getElementById('checkin').addEventListener('change', calculateTotalPrice);
         document.getElementById('checkout').addEventListener('change', calculateTotalPrice);
-        document.getElementById('no_of_guest').addEventListener('change', calculateTotalPrice);
 
         function calculateTotalPrice() {
             const roomSelect = document.getElementById('room');
             const checkin = document.getElementById('checkin').value;
             const checkout = document.getElementById('checkout').value;
-            const noOfGuest = document.getElementById('no_of_guest').value;
 
-            if (roomSelect.value && checkin && checkout && noOfGuest) {
-                const roomPrice = parseFloat(roomSelect.options[roomSelect.selectedIndex].text.split('- $')[1].split('/night')[0]);
+            if (roomSelect.value && checkin && checkout) {
+                const roomPrice = parseFloat(roomSelect.options[roomSelect.selectedIndex].text.split('RM')[1].split('/night')[0]);
                 const checkinDate = new Date(checkin);
                 const checkoutDate = new Date(checkout);
                 const nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
-                const totalPrice = nights * roomPrice * noOfGuest;
+                const totalPrice = nights * roomPrice;
                 document.getElementById('total_price').value = totalPrice.toFixed(2);
             }
         }
