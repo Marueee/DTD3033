@@ -144,21 +144,21 @@ $total_pages = ceil($total_records / $limit);
         }
 
         .edit-btn {
-            background-color: blue !important;
-            color: white !important;
+            background-color: blue;
+            color: white;
         }
 
         .edit-btn:hover {
-            background-color: darkblue !important;
+            background-color: darkblue;
         }
 
         .delete-btn {
-            background-color: red !important;
-            color: white !important;
+            background-color: red;
+            color: white;
         }
 
         .delete-btn:hover {
-            background-color: darkred !important;
+            background-color: darkred;
         }
 
         .modal {
