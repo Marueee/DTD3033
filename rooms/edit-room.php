@@ -305,8 +305,8 @@ $total_pages = ceil($total_records / $limit);
                         echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
                         echo "<td>" . date('d M Y H:i', strtotime($row['updated_at'])) . "</td>";
                         echo "<td class='action-buttons'>
-                                <button class='btn-edit-room' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
-                                <button class='btn-delete-room' onclick='deleteRoom(" . $row['room_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
+                                <button class='btn-edit-room' style='background-color: blue !important; color: white !important;' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
+                                <button class='btn-delete-room' style='background-color: red !important; color: white !important;' onclick='deleteRoom(" . $row['room_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
                               </td>";
                         echo "</tr>";
                     }
