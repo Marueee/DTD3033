@@ -3,6 +3,20 @@
 
 <head>
 	<?php include 'head.php'; ?>
+	<style>
+		.btn-book-room {
+			font-size: 1.5rem;
+			padding: 1rem 2rem;
+			background-color: white !important;
+			color: rgb(46, 26, 177) !important;
+			transition: background-color 0.3s, color 0.3s;
+			border: none !important;
+		}
+		.btn-book-room:hover {
+			background-color:rgb(46, 26, 177) !important;
+			color: white !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -19,6 +33,7 @@
 							<div class="text">
 								<h2>More than a hotel... an experience</h2>
 								<h1 class="mb-3">Hotel for the whole family, all year round.</h1>
+								<a href="booking/booking.php" class="btn btn-secondary btn-book-room py-3 px-4"><span>Book a room</span></a>
 							</div>
 						</div>
 					</div>
@@ -33,6 +48,7 @@
 							<div class="text">
 								<h2>La Passion Hotel &amp; Resort</h2>
 								<h1 class="mb-3">It feels like staying in your own home.</h1>
+								<a href="booking/booking.php" class="btn btn-secondary btn-book-room py-3 px-4"><span>Book a room</span></a>
 							</div>
 						</div>
 					</div>
@@ -40,84 +56,6 @@
 			</div>
 		</section>
 	</div>
-
-	<section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
-		<div class="container">
-			<div class="row no-gutters">
-				<div class="col-lg-12">
-					<form action="#" class="booking-form aside-stretch">
-						<div class="row">
-							<div class="col-md d-flex py-md-4">
-								<div class="form-group align-self-stretch d-flex align-items-end">
-									<div class="wrap align-self-stretch py-3 px-4">
-										<label for="#">Check-in Date</label>
-										<input type="text" class="form-control checkin_date" placeholder="Check-in date">
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex py-md-4">
-								<div class="form-group align-self-stretch d-flex align-items-end">
-									<div class="wrap align-self-stretch py-3 px-4">
-										<label for="#">Check-out Date</label>
-										<input type="text" class="form-control checkout_date" placeholder="Check-out date">
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex py-md-4">
-								<div class="form-group align-self-stretch d-flex align-items-end">
-									<div class="wrap align-self-stretch py-3 px-4">
-										<label for="#">Room</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
-													<option value="">Suite</option>
-													<option value="">Family Room</option>
-													<option value="">Deluxe Room</option>
-													<option value="">Classic Room</option>
-													<option value="">Superior Room</option>
-													<option value="">Luxury Room</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex py-md-4">
-								<div class="form-group align-self-stretch d-flex align-items-end">
-									<div class="wrap align-self-stretch py-3 px-4">
-										<label for="#">Guests</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control">
-													<option value="">1 Adult</option>
-													<option value="">2 Adults</option>
-													<option value="">3 Adults</option>
-													<option value="">4 Adults</option>
-													<option value="">5 Adults</option>
-													<option value="">6 Adults</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md d-flex">
-								<div class="form-group d-flex align-self-stretch">
-									<a href="rooms/show-rooms.php" class="btn btn-primary py-5 py-md-3 px-4 align-self-stretch d-block"><span>Check Availability <small>Best Price Guaranteed!</small></span></a>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="button_click me">
-		<a href="booking/booking.php"><button>Book a room</button></a>
-	</section>
 
 	<section class="ftco-section">
 		<div class="container">

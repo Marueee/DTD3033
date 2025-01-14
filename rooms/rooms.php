@@ -2,6 +2,21 @@
 <html lang="en">
   <head>
 	<?php include 'head.php';?>
+	<style>
+		.btn-book-room {
+			font-size: 1.5rem;
+			padding: 1rem 2rem;
+			background-color: white !important;
+			color:rgb(46, 26, 177) !important;
+			transition: background-color 0.3s, color 0.3s;
+			margin-bottom: 20px; /* Adjust this value to move the button upward */
+			border: none !important;
+		}
+		.btn-book-room:hover {
+			background-color:rgb(46, 26, 177) !important;
+			color: white !important;
+		}
+	</style>
   </head>
   <body>
 
@@ -33,6 +48,7 @@
           	<div class="text">
 	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../index.php">Home</a></span> <span>Restaurant</span></p>
 	            <h1 class="mb-4 bread">Rooms</h1>
+				<a href="../booking/booking.php" class="btn btn-secondary btn-book-room py-3 px-4"><span>Book a room</span></a>
             </div>
           </div>
         </div>
