@@ -16,6 +16,14 @@
 			background-color:rgb(46, 26, 177) !important;
 			color: white !important;
 		}
+		.btn-edit {
+			background-color: blue !important;
+			color: white !important;
+		}
+		.btn-delete {
+			background-color: red !important;
+			color: white !important;
+		}
 	</style>
   </head>
   <body>
