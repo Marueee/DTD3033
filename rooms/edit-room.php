@@ -54,15 +54,31 @@ if (isset($_POST['update']) && isset($_POST['room_id'])) {
     }
 }
 
-// Fetch all rooms using prepared statement
+// Pagination settings
+$limit = 10; // Number of entries to show in a page.
+if (isset($_GET["page"])) {
+    $page  = $_GET["page"];
+} else {
+    $page = 1;
+};
+$start_from = ($page - 1) * $limit;
+
+// Fetch all rooms using prepared statement with pagination
 try {
-    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number");
+    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number LIMIT ?, ?");
+    $stmt->bind_param("ii", $start_from, $limit);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
 } catch (Exception $e) {
     echo "Error fetching rooms: " . $e->getMessage();
 }
+
+// Get total number of records
+$total_records_query = "SELECT COUNT(*) FROM rooms";
+$total_records_result = $conn->query($total_records_query);
+$total_records = $total_records_result->fetch_row()[0];
+$total_pages = ceil($total_records / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -234,6 +250,31 @@ try {
         .back-btn:hover {
             background-color: #5a6268;
         }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
     </style>
 </head>
 
@@ -254,16 +295,6 @@ try {
             </thead>
             <tbody>
                 <?php
-                // Fetch all rooms using prepared statement
-                try {
-                    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number");
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    $stmt->close();
-                } catch (Exception $e) {
-                    echo "Error fetching rooms: " . $e->getMessage();
-                }
-
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['status']);
@@ -283,6 +314,17 @@ try {
                 ?>
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php
+            for ($i = 1; $i <= $total_pages; $i++) {
+                echo "<a href='edit-room.php?page=" . $i . "'";
+                if ($i == $page) echo " class='active'";
+                echo ">" . $i . "</a>";
+            }
+            ?>
+        </div>
     </div>
 
     <!-- Edit Modal -->
