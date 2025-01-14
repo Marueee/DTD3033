@@ -63,9 +63,20 @@ if (isset($_GET["page"])) {
 };
 $start_from = ($page - 1) * $limit;
 
-// Fetch all rooms using prepared statement with pagination
+// Sorting settings
+$sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'room_number';
+$sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'ASC';
+$valid_sort_columns = ['room_number', 'room_type', 'price_per_night', 'status', 'updated_at'];
+if (!in_array($sort_by, $valid_sort_columns)) {
+    $sort_by = 'room_number';
+}
+if (!in_array($sort_order, ['ASC', 'DESC'])) {
+    $sort_order = 'ASC';
+}
+
+// Fetch all rooms using prepared statement with pagination and sorting
 try {
-    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number LIMIT ?, ?");
+    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY $sort_by $sort_order LIMIT ?, ?");
     $stmt->bind_param("ii", $start_from, $limit);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -111,6 +122,7 @@ $total_pages = ceil($total_records / $limit);
         .room-table th {
             background-color: #f2f2f2;
             font-weight: bold;
+            cursor: pointer;
         }
 
         .room-table tr:nth-child(even) {
@@ -285,11 +297,11 @@ $total_pages = ceil($total_records / $limit);
         <table class="room-table">
             <thead>
                 <tr>
-                    <th>Room Number</th>
-                    <th>Room Type</th>
-                    <th>Price per Night (RM)</th>
-                    <th>Status</th>
-                    <th>Last Updated</th>
+                    <th onclick="sortTable('room_number')">Room Number</th>
+                    <th onclick="sortTable('room_type')">Room Type</th>
+                    <th onclick="sortTable('price_per_night')">Price per Night (RM)</th>
+                    <th onclick="sortTable('status')">Status</th>
+                    <th onclick="sortTable('updated_at')">Last Updated</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -319,7 +331,7 @@ $total_pages = ceil($total_records / $limit);
         <div class="pagination">
             <?php
             for ($i = 1; $i <= $total_pages; $i++) {
-                echo "<a href='edit-room.php?page=" . $i . "'";
+                echo "<a href='edit-room.php?page=" . $i . "&sort_by=" . $sort_by . "&sort_order=" . $sort_order . "'";
                 if ($i == $page) echo " class='active'";
                 echo ">" . $i . "</a>";
             }
@@ -402,6 +414,21 @@ $total_pages = ceil($total_records / $limit);
             if (event.target == document.getElementById('editModal')) {
                 closeModal();
             }
+        }
+
+        function sortTable(column) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const currentSortBy = urlParams.get('sort_by');
+            const currentSortOrder = urlParams.get('sort_order');
+            let newSortOrder = 'ASC';
+
+            if (currentSortBy === column && currentSortOrder === 'ASC') {
+                newSortOrder = 'DESC';
+            }
+
+            urlParams.set('sort_by', column);
+            urlParams.set('sort_order', newSortOrder);
+            window.location.search = urlParams.toString();
         }
     </script>
 </body>
