@@ -133,7 +133,7 @@ $total_pages = ceil($total_records / $limit);
             color: orange;
         }
 
-        .edit-btn, .delete-btn {
+        .btn-edit-room, .btn-delete-room {
             padding: 5px 10px;
             border: none;
             border-radius: 4px;
@@ -143,21 +143,21 @@ $total_pages = ceil($total_records / $limit);
             transition: background-color 0.3s ease;
         }
 
-        .edit-btn {
+        .btn-edit-room {
             background-color: blue !important;
             color: white !important;
         }
 
-        .edit-btn:hover {
+        .btn-edit-room:hover {
             background-color: darkblue !important;
         }
 
-        .delete-btn {
+        .btn-delete-room {
             background-color: red !important;
             color: white !important;
         }
 
-        .delete-btn:hover {
+        .btn-delete-room:hover {
             background-color: darkred !important;
         }
 
@@ -305,8 +305,8 @@ $total_pages = ceil($total_records / $limit);
                         echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
                         echo "<td>" . date('d M Y H:i', strtotime($row['updated_at'])) . "</td>";
                         echo "<td class='action-buttons'>
-                                <button class='edit-btn' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
-                                <button class='delete-btn' onclick='deleteRoom(" . $row['room_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
+                                <button class='btn-edit-room' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
+                                <button class='btn-delete-room' onclick='deleteRoom(" . $row['room_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
                               </td>";
                         echo "</tr>";
                     }
