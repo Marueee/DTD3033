@@ -31,13 +31,13 @@
 				<div class="col-md-6">
 					<div class="single-slider-resto mb-4 mb-md-0 owl-carousel">
 						<div class="item">
-							<div class="resto-img rounded" style="background-image: url(images/room-4.jpg);"></div>
+							<div class="resto-img rounded" style="background-image: url(images/menu-1.jpg);"></div>
 						</div>
 						<div class="item">
-							<div class="resto-img rounded" style="background-image: url(images/room-5.jpg);"></div>
+							<div class="resto-img rounded" style="background-image: url(images/menu-6.jpg);"></div>
 						</div>
 						<div class="item">
-							<div class="resto-img rounded" style="background-image: url(images/room-6.jpg);"></div>
+							<div class="resto-img rounded" style="background-image: url(images/menu-5.jpg);"></div>
 						</div>
 					</div>
 				</div>

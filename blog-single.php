@@ -53,16 +53,16 @@
 
           <div class="about-author d-flex p-4 bg-light">
             <div class="bio align-self-md-center mr-4">
-              <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+              <img src="images/Chinese.jpeg" alt="Image placeholder" class="img-fluid mb-4">
             </div>
             <div class="desc align-self-md-center">
-              <h3>Lance Smith</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+              <h3>Chuang Ah Boi</h3>
+              <p>The heart of La Passion is the sense of community we create. Our guests often return to enjoy the familiar faces of our staff, who go out of their way to make each stay special. With a mix of elegance and warmth, La Passion is the perfect blend of luxury and personal touch.</p>
             </div>
           </div>
 
 
-          <div class="pt-5 mt-5">
+          <!-- <div class="pt-5 mt-5">
             <h3 class="mb-5">6 Comments</h3>
             <ul class="comment-list">
               <li class="comment">
@@ -144,7 +144,7 @@
                 </div>
               </li>
             </ul>
-            <!-- END comment-list -->
+            
 
             <div class="comment-form-wrap pt-5">
               <h3 class="mb-5">Leave a comment</h3>
@@ -172,7 +172,7 @@
 
               </form>
             </div>
-          </div>
+          </div> -->
 
         </div> <!-- .col-md-8 -->
         <div class="col-lg-4 sidebar ftco-animate pl-md-5">
@@ -201,7 +201,7 @@
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
               <div class="text">
-                <h3 class="heading"><a href="#">Explore the Surroundings of La Passion</a></h3>
+                <h3 class="heading"><a href="blog.php">Explore the Surroundings of La Passion</a></h3>
                 <div class="meta">
                   <div><a href="#"><span class="icon-calendar"></span> July, 16 2023</a></div>
                   <div><a href="#"><span class="icon-person"></span> Admin</a></div>
@@ -212,7 +212,7 @@
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
               <div class="text">
-                <h3 class="heading"><a href="#">Host Your Events in Style</a></h3>
+                <h3 class="heading"><a href="blog.php">Host Your Events in Style</a></h3>
                 <div class="meta">
                   <div><a href="#"><span class="icon-calendar"></span> Apr, 28 2019</a></div>
                   <div><a href="#"><span class="icon-person"></span> Admin</a></div>
@@ -223,7 +223,7 @@
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a>
               <div class="text">
-                <h3 class="heading"><a href="#">Perfect Stay for Families and Couples</a></h3>
+                <h3 class="heading"><a href="blog.php">Perfect Stay for Families and Couples</a></h3>
                 <div class="meta">
                   <div><a href="#"><span class="icon-calendar"></span> July, 04 2021</a></div>
                   <div><a href="#"><span class="icon-person"></span> Admin</a></div>
@@ -234,22 +234,22 @@
           </div>
 
           <div class="sidebar-box ftco-animate">
-            <h3>Tag Cloud</h3>
+            <h3>Our Menu</h3>
             <div class="tagcloud">
-              <a href="#" class="tag-cloud-link">dish</a>
-              <a href="#" class="tag-cloud-link">menu</a>
-              <a href="#" class="tag-cloud-link">food</a>
-              <a href="#" class="tag-cloud-link">sweet</a>
-              <a href="#" class="tag-cloud-link">tasty</a>
-              <a href="#" class="tag-cloud-link">delicious</a>
-              <a href="#" class="tag-cloud-link">desserts</a>
-              <a href="#" class="tag-cloud-link">drinks</a>
+              <a href="restaurant.php" class="tag-cloud-link">dish</a>
+              <a href="restaurant.php" class="tag-cloud-link">menu</a>
+              <a href="restaurant.php" class="tag-cloud-link">food</a>
+              <a href="restaurant.php" class="tag-cloud-link">sweet</a>
+              <a href="restaurant.php" class="tag-cloud-link">tasty</a>
+              <a href="restaurant.php" class="tag-cloud-link">delicious</a>
+              <a href="restaurant.php" class="tag-cloud-link">desserts</a>
+              <a href="restaurant.php" class="tag-cloud-link">drinks</a>
             </div>
           </div>
 
           <div class="sidebar-box ftco-animate">
-            <h3>Paragraph</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+            <h3>La Passion Hotel</h3>
+            <p>You'll never want to leave</p>
           </div>
         </div>
 

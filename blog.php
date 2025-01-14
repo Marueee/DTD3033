@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <?php include 'head.php';?>
-  </head>
-  <body>
+
+<head>
+  <?php include 'head.php'; ?>
+</head>
+
+<body>
 
   <?php include 'navbar.php'; ?>
 
 
-		<div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-          	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
-	            <h1 class="mb-4 bread">Our Stories</h1>
-            </div>
+  <div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          <div class="text">
+            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
+            <h1 class="mb-4 bread">Our Stories</h1>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <section class="ftco-section">
+  <section class="ftco-section">
     <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Welcome to La Passion Hotel</span>
-            <h2 class="mb-4">Curious about La Passion? Let our guests tell you why!</h2>
-          </div>
-        </div>  
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+          <span class="subheading">Welcome to La Passion Hotel</span>
+          <h2 class="mb-4">Curious about La Passion? Let our guests tell you why!</h2>
+        </div>
+      </div>
       <div class="container">
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
@@ -37,7 +39,7 @@
               <a href="blog-single.php" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
               </a>
               <div class="text mt-3">
-              	<div class="meta mb-2">
+                <div class="meta mb-2">
                   <div><a href="#">Sep. 16, 2018</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -53,7 +55,7 @@
               <a href="blog-single.php" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
               </a>
               <div class="text mt-3">
-              	<div class="meta mb-2">
+                <div class="meta mb-2">
                   <div><a href="#">Oct. 30, 2019</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -69,7 +71,7 @@
               <a href="blog-single.php" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
               </a>
               <div class="text mt-3">
-              	<div class="meta mb-2">
+                <div class="meta mb-2">
                   <div><a href="#">Jun. 06, 2024</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -86,7 +88,7 @@
               <a href="blog-single.php" class="block-20 rounded" style="background-image: url('images/image_4.jpg');">
               </a>
               <div class="text mt-3">
-              	<div class="meta mb-2">
+                <div class="meta mb-2">
                   <div><a href="#">Feb. 19, 2022</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -102,7 +104,7 @@
               <a href="blog-single.php" class="block-20 rounded" style="background-image: url('images/image_5.jpg');">
               </a>
               <div class="text mt-3">
-              	<div class="meta mb-2">
+                <div class="meta mb-2">
                   <div><a href="#">Mar. 08, 2023</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -118,7 +120,7 @@
               <a href="blog-single.php" class="block-20 rounded" style="background-image: url('images/image_6.jpg');">
               </a>
               <div class="text mt-3">
-              	<div class="meta mb-2">
+                <div class="meta mb-2">
                   <div><a href="#">Dec. 11, 2023</a></div>
                   <div><a href="#">Admin</a></div>
                   <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -131,13 +133,16 @@
           </div>
         </div>
       </div>
-    </section>
+  </section>
 
-    <?php include 'footer.php'; ?>
-      
+  <?php include 'footer.php'; ?>
+
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg></div>
 
 
   <script src="js/jquery.min.js"></script>
@@ -156,6 +161,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
-  </body>
+
+</body>
+
 </html>
