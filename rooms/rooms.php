@@ -33,13 +33,28 @@
 	          <li class="nav-item active"><a href="../rooms.php" class="nav-link">Our Rooms</a></li>
 	          <li class="nav-item"><a href="../restaurant.php" class="nav-link">Restaurant</a></li>
 	          <li class="nav-item"><a href="../about.php" class="nav-link">About Us</a></li>
-	          <li class="nav-item"><a href="../contact.php" class="nav-link">Contact</a></li>
-	        </ul>
+	          <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user"></i> Profile
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+						<?php if (isset($_SESSION['username'])): ?>
+							<a class="dropdown-item" href="../profile.php">My Profile</a>
+							<a class="dropdown-item" href="logout.php">Logout</a>
+						<?php else: ?>
+							<a class="dropdown-item" href="logins.php">Login</a>
+							<a class="dropdown-item" href="../register/registers.php">Register</a>
+						<?php endif; ?>
+					</div>
+				</li>
+			</ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
 		<div class="hero-wrap" style="background-image: url('../images/bg_3.jpg');">
+		<div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
@@ -74,7 +89,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">RM 200</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><a href="../rooms.html">King Room</a></h3>
-	    						<p class="pt-1"><a href="../rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="../rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
@@ -87,7 +102,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">RM 300</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><a href="../rooms.html">Suite Room</a></h3>
-	    						<p class="pt-1"><a href="../rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="../rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
@@ -101,7 +116,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">RM 250</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><a href="../rooms.html">Family Room</a></h3>
-	    						<p class="pt-1"><a href="../rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="../rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
@@ -114,7 +129,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">RM 350</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><a href="../rooms.html">Deluxe Room</a></h3>
-	    						<p class="pt-1"><a href="../rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="../rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
@@ -128,7 +143,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">RM 500</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><a href="../rooms.html">Luxury Room</a></h3>
-	    						<p class="pt-1"><a href="../rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="../rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
@@ -141,7 +156,7 @@
     							<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
     							<p class="mb-0"><span class="price mr-1">RM 400</span> <span class="per">per night</span></p>
 	    						<h3 class="mb-3"><a href="../rooms.html">Superior Room</a></h3>
-	    						<p class="pt-1"><a href="../rooms-single.html" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+	    						<p class="pt-1"><a href="../rooms-single.php" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
     						</div>
     					</div>
     				</div>
