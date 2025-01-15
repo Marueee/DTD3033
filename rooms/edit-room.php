@@ -54,42 +54,15 @@ if (isset($_POST['update']) && isset($_POST['room_id'])) {
     }
 }
 
-// Pagination settings
-$limit = 10; // Number of entries to show in a page.
-if (isset($_GET["page"])) {
-    $page  = $_GET["page"];
-} else {
-    $page = 1;
-};
-$start_from = ($page - 1) * $limit;
-
-// Sorting settings
-$sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'room_number';
-$sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'ASC';
-$valid_sort_columns = ['room_number', 'room_type', 'price_per_night', 'status', 'updated_at'];
-if (!in_array($sort_by, $valid_sort_columns)) {
-    $sort_by = 'room_number';
-}
-if (!in_array($sort_order, ['ASC', 'DESC'])) {
-    $sort_order = 'ASC';
-}
-
-// Fetch all rooms using prepared statement with pagination and sorting
+// Fetch all rooms using prepared statement
 try {
-    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY $sort_by $sort_order LIMIT ?, ?");
-    $stmt->bind_param("ii", $start_from, $limit);
+    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number");
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
 } catch (Exception $e) {
     echo "Error fetching rooms: " . $e->getMessage();
 }
-
-// Get total number of records
-$total_records_query = "SELECT COUNT(*) FROM rooms";
-$total_records_result = $conn->query($total_records_query);
-$total_records = $total_records_result->fetch_row()[0];
-$total_pages = ceil($total_records / $limit);
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +95,6 @@ $total_pages = ceil($total_records / $limit);
         .room-table th {
             background-color: #f2f2f2;
             font-weight: bold;
-            cursor: pointer;
         }
 
         .room-table tr:nth-child(even) {
@@ -145,7 +117,7 @@ $total_pages = ceil($total_records / $limit);
             color: orange;
         }
 
-        .btn-edit-room, .btn-delete-room {
+        .edit-btn, .delete-btn {
             padding: 5px 10px;
             border: none;
             border-radius: 4px;
@@ -155,22 +127,22 @@ $total_pages = ceil($total_records / $limit);
             transition: background-color 0.3s ease;
         }
 
-        .btn-edit-room {
-            background-color: blue !important;
-            color: white !important;
+        .edit-btn {
+            background-color: #007bff;
+            color: white;
         }
 
-        .btn-edit-room:hover {
-            background-color: darkblue !important;
+        .edit-btn:hover {
+            background-color: #0056b3;
         }
 
-        .btn-delete-room {
-            background-color: red !important;
-            color: white !important;
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
         }
 
-        .btn-delete-room:hover {
-            background-color: darkred !important;
+        .delete-btn:hover {
+            background-color: #c82333;
         }
 
         .modal {
@@ -262,31 +234,6 @@ $total_pages = ceil($total_records / $limit);
         .back-btn:hover {
             background-color: #5a6268;
         }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .pagination a {
-            color: black;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color .3s;
-            border: 1px solid #ddd;
-            margin: 0 4px;
-        }
-
-        .pagination a.active {
-            background-color: #007bff;
-            color: white;
-            border: 1px solid #007bff;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #ddd;
-        }
     </style>
 </head>
 
@@ -297,16 +244,26 @@ $total_pages = ceil($total_records / $limit);
         <table class="room-table">
             <thead>
                 <tr>
-                    <th onclick="sortTable('room_number')">Room Number</th>
-                    <th onclick="sortTable('room_type')">Room Type</th>
-                    <th onclick="sortTable('price_per_night')">Price per Night (RM)</th>
-                    <th onclick="sortTable('status')">Status</th>
-                    <th onclick="sortTable('updated_at')">Last Updated</th>
+                    <th>Room Number</th>
+                    <th>Room Type</th>
+                    <th>Price per Night (RM)</th>
+                    <th>Status</th>
+                    <th>Last Updated</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
+                // Fetch all rooms using prepared statement
+                try {
+                    $stmt = $conn->prepare("SELECT * FROM rooms ORDER BY room_number");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $stmt->close();
+                } catch (Exception $e) {
+                    echo "Error fetching rooms: " . $e->getMessage();
+                }
+
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $statusClass = strtolower($row['status']);
@@ -317,8 +274,8 @@ $total_pages = ceil($total_records / $limit);
                         echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
                         echo "<td>" . date('d M Y H:i', strtotime($row['updated_at'])) . "</td>";
                         echo "<td class='action-buttons'>
-                                <button class='btn-edit-room' style='background-color: blue !important; color: white !important;' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
-                                <button class='btn-delete-room' style='background-color: red !important; color: white !important;' onclick='deleteRoom(" . $row['room_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
+                                <button class='edit-btn' onclick='editRoom(" . $row['room_id'] . ")'><i class='fas fa-edit'></i> Edit</button>
+                                <button class='delete-btn' onclick='deleteRoom(" . $row['room_id'] . ")'><i class='fas fa-trash'></i> Delete</button>
                               </td>";
                         echo "</tr>";
                     }
@@ -326,17 +283,6 @@ $total_pages = ceil($total_records / $limit);
                 ?>
             </tbody>
         </table>
-
-        <!-- Pagination -->
-        <div class="pagination">
-            <?php
-            for ($i = 1; $i <= $total_pages; $i++) {
-                echo "<a href='edit-room.php?page=" . $i . "&sort_by=" . $sort_by . "&sort_order=" . $sort_order . "'";
-                if ($i == $page) echo " class='active'";
-                echo ">" . $i . "</a>";
-            }
-            ?>
-        </div>
     </div>
 
     <!-- Edit Modal -->
@@ -414,21 +360,6 @@ $total_pages = ceil($total_records / $limit);
             if (event.target == document.getElementById('editModal')) {
                 closeModal();
             }
-        }
-
-        function sortTable(column) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const currentSortBy = urlParams.get('sort_by');
-            const currentSortOrder = urlParams.get('sort_order');
-            let newSortOrder = 'ASC';
-
-            if (currentSortBy === column && currentSortOrder === 'ASC') {
-                newSortOrder = 'DESC';
-            }
-
-            urlParams.set('sort_by', column);
-            urlParams.set('sort_order', newSortOrder);
-            window.location.search = urlParams.toString();
         }
     </script>
 </body>

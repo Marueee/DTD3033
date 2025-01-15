@@ -13,7 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
-				<li class="nav-item"><a href="rooms/rooms.php" class="nav-link">Our Rooms</a></li>
+				<li class="nav-item"><a href="rooms/rooms.php" class="nav-link">Our BILIK</a></li>
 				<li class="nav-item"><a href="restaurant.php" class="nav-link">Restaurant</a></li>
 				<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>
 				<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>

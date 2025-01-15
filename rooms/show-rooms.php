@@ -19,6 +19,11 @@ if (!in_array($sort, $allowed_sort_columns)) {
 // Toggle sort order
 $new_order = ($order === 'ASC') ? 'DESC' : 'ASC';
 
+// Pagination settings
+$limit = 10; // Number of entries to show in a page.
+$page = isset($_GET["page"]) ? $_GET["page"] : 1;
+$start_from = ($page - 1) * $limit;
+
 // Modify query to only use room_type filter
 try {
     $query = "SELECT * FROM rooms WHERE 1=1";
@@ -31,19 +36,34 @@ try {
         $types .= "s";
     }
 
-    $query .= " ORDER BY $sort $order";
-    $stmt = $conn->prepare($query);
+    $query .= " ORDER BY $sort $order LIMIT ?, ?";
+    $params[] = $start_from;
+    $params[] = $limit;
+    $types .= "ii";
 
-    if (!empty($params)) {
-        $stmt->bind_param($types, ...$params);
-    }
-    
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param($types, ...$params);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
 } catch(Exception $e) {
     echo "Error: " . $e->getMessage();
 }
+
+// Get total number of records
+$total_records_query = "SELECT COUNT(*) FROM rooms WHERE 1=1";
+if (!empty($room_type_filter)) {
+    $total_records_query .= " AND room_type = ?";
+}
+$stmt = $conn->prepare($total_records_query);
+if (!empty($room_type_filter)) {
+    $stmt->bind_param("s", $room_type_filter);
+}
+$stmt->execute();
+$total_records_result = $stmt->get_result();
+$total_records = $total_records_result->fetch_row()[0];
+$total_pages = ceil($total_records / $limit);
+$stmt->close();
 
 // Sort indicator arrows
 function getSortIndicator($column, $currentSort, $currentOrder) {
@@ -216,6 +236,31 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
         .search-form button:hover {
             background: #0056b3;
         }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: black;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
     </style>
 </head>
 <body>
@@ -275,6 +320,23 @@ function getSortIndicator($column, $currentSort, $currentOrder) {
                 ?>
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <?php
+            if ($page > 1) {
+                echo "<a href='show-rooms.php?page=" . ($page - 1) . "&sort=" . $sort . "&order=" . $order . "&room_type=" . urlencode($room_type_filter) . "'>&laquo;</a>";
+            }
+            for ($i = 1; $i <= $total_pages; $i++) {
+                echo "<a href='show-rooms.php?page=" . $i . "&sort=" . $sort . "&order=" . $order . "&room_type=" . urlencode($room_type_filter) . "'";
+                if ($i == $page) echo " class='active'";
+                echo ">" . $i . "</a>";
+            }
+            if ($page < $total_pages) {
+                echo "<a href='show-rooms.php?page=" . ($page + 1) . "&sort=" . $sort . "&order=" . $order . "&room_type=" . urlencode($room_type_filter) . "'>&raquo;</a>";
+            }
+            ?>
+        </div>
     </div>
 </body>
 </html>

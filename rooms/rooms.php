@@ -33,7 +33,7 @@
 	          <li class="nav-item active"><a href="../rooms.php" class="nav-link">Our Rooms</a></li>
 	          <li class="nav-item"><a href="../restaurant.php" class="nav-link">Restaurant</a></li>
 	          <li class="nav-item"><a href="../about.php" class="nav-link">About Us</a></li>
-	          <li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="../contact.php" class="nav-link">Contact</a></li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-user"></i> Profile
@@ -43,7 +43,7 @@
 							<a class="dropdown-item" href="../profile.php">My Profile</a>
 							<a class="dropdown-item" href="logout.php">Logout</a>
 						<?php else: ?>
-							<a class="dropdown-item" href="logins.php">Login</a>
+							<a class="dropdown-item" href="../login/logins.php">Login</a>
 							<a class="dropdown-item" href="../register/registers.php">Register</a>
 						<?php endif; ?>
 					</div>
@@ -68,9 +68,7 @@
       </div>
     </div>
 
-	<section>
-		<?php include 'show-rooms.php';?>
-	</section>
+	
 
     <section class="ftco-section ftco-no-pb ftco-room">
     	<div class="container-fluid px-0">
@@ -164,7 +162,10 @@
     		</div>
     	</div>
     </section>
-
+	
+	<section>
+		<?php include 'show-rooms.php';?>
+	</section>
   <?php include '../footer.php';?> 
 
   <!-- loader -->

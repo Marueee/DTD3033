@@ -8,7 +8,6 @@
 <body>
 
   <?php include 'navbar.php'; ?>
-
   
   <div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
     <div class="overlay"></div>
@@ -33,22 +32,22 @@
         <div class="w-100"></div>
         <div class="col-md-3 d-flex">
           <div class="info rounded bg-white p-4">
-            <p><span>Address:</span> Kolej Harun Aminurrashid, Universiti Pendidikan Sultan Idris, Kampus Sultan Azlan Shah, 35900 Tanjong Malim, Perak </p>
+            <p><span><i class="icon-map-marker"></i> Address:</span> Kolej Harun Aminurrashid, Universiti Pendidikan Sultan Idris, Kampus Sultan Azlan Shah, 35900 Tanjong Malim, Perak </p>
           </div>
         </div>
         <div class="col-md-3 d-flex">
           <div class="info rounded bg-white p-4">
-            <p><span>Phone:</span> <a href="tel://1234567920">+605-450 6627</a></p>
+            <p><span><i class="icon-phone"></i> Phone:</span> <a href="tel://1234567920">+605-450 6627</a></p>
           </div>
         </div>
         <div class="col-md-3 d-flex">
           <div class="info rounded bg-white p-4">
-            <p><span>Email:</span> <a href="mailto:info@yoursite.com">admin@meta.upsi.edu.my</a></p>
+            <p><span><i class="icon-envelope"></i> Email:</span> <a href="mailto:info@yoursite.com">admin@meta.upsi.edu.my</a></p>
           </div>
         </div>
         <div class="col-md-3 d-flex">
           <div class="info rounded bg-white p-4">
-            <p><span>Website</span> <a href="#">https://d20221101806-dtd3033.a241.meta-upsi.com/Group-Project/DTD3033/</a></p>
+            <p><span><i class="icon-globe"></i> Website:</span> <a href="#">https://d20221101806-dtd3033.a241.meta-upsi.com/Group-Project/DTD3033/</a></p>
           </div>
         </div>
       </div>

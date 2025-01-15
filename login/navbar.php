@@ -16,8 +16,7 @@ if (session_status() == PHP_SESSION_NONE) {
 				<li class="nav-item"><a href="../rooms/rooms.php" class="nav-link">Our Rooms</a></li>
 				<li class="nav-item"><a href="../restaurant.php" class="nav-link">Restaurant</a></li>
 				<li class="nav-item"><a href="../about.html" class="nav-link">About Us</a></li>
-				<li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="../contact.html" class="nav-link">Contact</a></li>
+				<li class="nav-item"><a href="../contact.php" class="nav-link">Contact</a></li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-user"></i> Profile
