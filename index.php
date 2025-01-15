@@ -135,7 +135,7 @@
 		</div>
 	</section>
 
-	<section class="testimony-section">
+	<!-- section class="testimony-section">
 		<div class="container">
 			<div class="row no-gutters ftco-animate justify-content-center">
 				<div class="col-md-5 d-flex">
@@ -213,13 +213,13 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</!-->
 
 	<section class="instagram">
 		<div class="container-fluid">
 			<div class="row no-gutters justify-content-center pb-5">
 				<div class="col-md-7 text-center heading-section ftco-animate">
-					<span class="subheading">Photos</span>
+					<span class="subheading" style="margin-top: 4rem;">Photos</span>
 					<h2><span>Instagram</span></h2>
 				</div>
 			</div>

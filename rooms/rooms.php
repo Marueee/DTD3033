@@ -9,7 +9,7 @@
 			background-color: white !important;
 			color:rgb(46, 26, 177) !important;
 			transition: background-color 0.3s, color 0.3s;
-			margin-bottom: 20px; /* Adjust this value to move the button upward */
+			margin-bottom: 20px; 
 			border: none !important;
 		}
 		.btn-book-room:hover {
