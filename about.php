@@ -134,7 +134,7 @@
 	            <h2 class="mb-4">La Passion Hotel the Most Recommended Hotel All Over the World</h2>
 	          </div>
 	          <p>La Passion Hotel combines elegance, comfort, and exceptional service to create an unforgettable stay for every guest. Nestled in a prime location, our hotel offers the perfect balance of tranquility and accessibility, making it an ideal destination for both leisure and business travelers.</p>
-	          <p><a href="rooms.php" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
+	          <p><a href="rooms/rooms.php" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
 					</div>
 				</div>
 			</div>
@@ -162,7 +162,7 @@
 										<div class="user-img" style="background-image: url(images/person_1.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Megan Axolotl</p>
+											<p class="name">Meowmad Ali</p>
 											<span class="position">Businessman</span>
 										</div>
 									</div>
@@ -177,7 +177,7 @@
 										<div class="user-img" style="background-image: url(images/person_5.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Cristopher Alex</p>
+											<p class="name">Ahmad Karim</p>
 											<span class="position">CEO</span>
 										</div>
 									</div>
@@ -192,7 +192,7 @@
 										<div class="user-img" style="background-image: url(images/Person_3.jpeg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Jamal Trevor</p>
+											<p class="name">Zarif</p>
 											<span class="position">Athlete</span>
 										</div>
 									</div>
@@ -207,7 +207,7 @@
 										<div class="user-img" style="background-image: url(images/person_4.jpg)">
 										</div>
 										<div class="pos ml-3">
-											<p class="name">Mustafa Columbus</p>
+											<p class="name">Asfar</p>
 											<span class="position">Businessman</span>
 										</div>
 									</div>

@@ -54,6 +54,9 @@
 						Copyright &copy;<script>
 							document.write(new Date().getFullYear());
 						</script> All rights reserved </p>
+						<p>MUHAMMAD HAIKAL BIN MOHD JAKI | D20221101806</p>
+						<p>AMIRUL AZIM BIN APANDI | D20221101850</p>
+						<p>LUQMANUL HAKEEM BIN ZULKARNAIN | D20221101871</p>
 				</div>
 			</div>
 		</div>
