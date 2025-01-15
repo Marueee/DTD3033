@@ -2,12 +2,47 @@
 <html lang="en">
 
 <head>
-  <?php include 'head.php'; ?>
-</head>
+<?php include 'head.php'; 
+    
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }?>
 
 <body>
 
-  <?php include 'navbar.php'; ?>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	<div class="container">
+		<a class="navbar-brand" href="index.php">La<span>Passion</span></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="oi oi-menu"></span> Menu
+		</button>
+
+		<div class="collapse navbar-collapse" id="ftco-nav">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="rooms/rooms.php" class="nav-link">Our Rooms</a></li>
+				<li class="nav-item"><a href="restaurant.php" class="nav-link">Restaurant</a></li>
+				<li class="nav-item"><a href="about.php" class="nav-link">About Us</a></li>
+				<li class="nav-item active"><a href="contact.php" class="nav-link">Contact</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-user"></i> Profile
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+						<?php if (isset($_SESSION['username'])): ?>
+							<a class="dropdown-item" href="profile.php">My Profile</a>
+							<a class="dropdown-item" href="reservation.php">My Reservations</a>
+							<a class="dropdown-item" href="login/logout.php">Logout</a>
+						<?php else: ?>
+							<a class="dropdown-item" href="login/logins.php">Login</a>
+							<a class="dropdown-item" href="register/registers.php">Register</a>
+						<?php endif; ?>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
   
   <div class="hero-wrap" style="background-image: url('images/bg_3.jpg');">
     <div class="overlay"></div>
@@ -47,7 +82,7 @@
         </div>
         <div class="col-md-3 d-flex">
           <div class="info rounded bg-white p-4">
-            <p><span><i class="icon-globe"></i> Website:</span> <a href="#">https://d20221101806-dtd3033.a241.meta-upsi.com/Group-Project/DTD3033/</a></p>
+            <p><span><i class="icon-globe"></i> Website:</span> <a href="https://d20221101806-dtd3033.a241.meta-upsi.com/Group-Project/DTD3033/">https://d20221101806-dtd3033.a241.meta-upsi.com/Group-Project/DTD3033/</a></p>
           </div>
         </div>
       </div>

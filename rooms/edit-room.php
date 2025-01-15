@@ -244,11 +244,11 @@ try {
         <table class="room-table">
             <thead>
                 <tr>
-                    <th>Room Number</th>
-                    <th>Room Type</th>
-                    <th>Price per Night (RM)</th>
-                    <th>Status</th>
-                    <th>Last Updated</th>
+                    <th onclick="sortTable(0)" style="cursor: pointer;">Room Number ⇅</th>
+                    <th onclick="sortTable(1)" style="cursor: pointer;">Room Type ⇅</th>
+                    <th onclick="sortTable(2)" style="cursor: pointer;">Price per Night (RM) ⇅</th>
+                    <th onclick="sortTable(3)" style="cursor: pointer;">Status ⇅</th>
+                    <th onclick="sortTable(4)" style="cursor: pointer;">Last Updated ⇅</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -328,17 +328,20 @@ try {
         function editRoom(roomId) {
             // Show modal
             document.getElementById('editModal').classList.add('show');
+            
+            // Get the row data
+            const row = event.target.closest('tr');
+            const roomNumber = row.cells[0].textContent;
+            const roomType = row.cells[1].textContent;
+            const price = row.cells[2].textContent.replace('RM ', '').trim();
+            const status = row.cells[3].querySelector('span').textContent.toLowerCase();
+            
+            // Set form values
             document.getElementById('edit_room_id').value = roomId;
-
-            // Fetch room data via AJAX
-            fetch(`get_room.php?id=${roomId}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('edit_room_number').value = data.room_number;
-                    document.getElementById('edit_room_type').value = data.room_type;
-                    document.getElementById('edit_price').value = data.price_per_night;
-                    document.getElementById('edit_status').value = data.status;
-                });
+            document.getElementById('edit_room_number').value = roomNumber;
+            document.getElementById('edit_room_type').value = roomType;
+            document.getElementById('edit_price').value = parseFloat(price);
+            document.getElementById('edit_status').value = status;
         }
 
         function deleteRoom(roomId) {
@@ -359,6 +362,70 @@ try {
         window.onclick = function(event) {
             if (event.target == document.getElementById('editModal')) {
                 closeModal();
+            }
+        }
+
+        // Add this new sorting function
+        function sortTable(n) {
+            let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.querySelector(".room-table");
+            switching = true;
+            dir = "asc";
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+
+                    // Get comparison values based on column type
+                    let xValue, yValue;
+                    if (n === 2) { // Price column
+                        xValue = parseFloat(x.textContent.replace('RM ', '').trim());
+                        yValue = parseFloat(y.textContent.replace('RM ', '').trim());
+                    } else if (n === 4) { // Date column
+                        xValue = new Date(x.textContent);
+                        yValue = new Date(y.textContent);
+                    } else { // Text columns
+                        xValue = x.textContent.toLowerCase();
+                        yValue = y.textContent.toLowerCase();
+                    }
+
+                    if (dir === "asc") {
+                        if (xValue > yValue) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir === "desc") {
+                        if (xValue < yValue) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount === 0 && dir === "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+
+            // Update sort indicators on headers
+            const headers = table.getElementsByTagName("th");
+            for (let i = 0; i < headers.length; i++) {
+                headers[i].textContent = headers[i].textContent.replace(' ↑', '').replace(' ↓', '');
+                if (i === n) {
+                    headers[i].textContent += (dir === "asc" ? ' ↑' : ' ↓');
+                }
             }
         }
     </script>

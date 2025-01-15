@@ -7,9 +7,44 @@ if (!isset($_SESSION['username'])) {
 
 include 'auth/db_config.php';
 
+// Handle Cancel
+if (isset($_POST['cancel']) && isset($_POST['reservation_id'])) {
+    try {
+        // Start transaction
+        $conn->begin_transaction();
+
+        // Update reservation status
+        $stmt = $conn->prepare("UPDATE reservations SET reservation_status = 'cancelled' WHERE reservation_id = ?");
+        $stmt->bind_param("i", $_POST['reservation_id']);
+        $stmt->execute();
+        $stmt->close();
+
+        // Get room_id from reservation
+        $stmt = $conn->prepare("SELECT room_id FROM reservations WHERE reservation_id = ?");
+        $stmt->bind_param("i", $_POST['reservation_id']);
+        $stmt->execute();
+        $stmt->bind_result($room_id);
+        $stmt->fetch();
+        $stmt->close();
+
+        // Update room status to available
+        $stmt = $conn->prepare("UPDATE rooms SET status = 'available' WHERE room_id = ?");
+        $stmt->bind_param("i", $room_id);
+        $stmt->execute();
+        $stmt->close();
+
+        // Commit transaction
+        $conn->commit();
+    } catch (Exception $e) {
+        // Rollback transaction on error
+        $conn->rollback();
+        echo "Error cancelling reservation: " . $e->getMessage();
+    }
+}
+
 // Fetch user bookings
 $user_id = $_SESSION['user_id'];
-$booking_query = "SELECT rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.total_price, reservations.reservation_status 
+$booking_query = "SELECT reservations.reservation_id, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.total_price, reservations.reservation_status 
                   FROM reservations 
                   JOIN rooms ON reservations.room_id = rooms.room_id 
                   WHERE reservations.user_id = ? 
@@ -65,6 +100,7 @@ $bookings_result = $stmt->get_result();
                                 <th>Check-out Date</th>
                                 <th>Total Price</th>
                                 <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,10 +113,18 @@ $bookings_result = $stmt->get_result();
                                     echo "<td>" . date('d M Y', strtotime($booking['checkout_date'])) . "</td>";
                                     echo "<td>RM" . $booking['total_price'] . "</td>";
                                     echo "<td>" . ucfirst($booking['reservation_status']) . "</td>";
+                                    echo "<td>";
+                                    if ($booking['reservation_status'] !== 'cancelled') {
+                                        echo "<form method='POST' style='display:inline-block;'>
+                                                <input type='hidden' name='reservation_id' value='" . $booking['reservation_id'] . "'>
+                                                <button type='submit' name='cancel' class='btn btn-danger btn-sm'>Cancel</button>
+                                              </form>";
+                                    }
+                                    echo "</td>";
                                     echo "</tr>";
                                 }
                             } else {
-                                echo "<tr><td colspan='5'>No bookings found.</td></tr>";
+                                echo "<tr><td colspan='6'>No bookings found.</td></tr>";
                             }
                             ?>
                         </tbody>

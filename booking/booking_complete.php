@@ -48,7 +48,10 @@ ini_set('display_errors', 1);
                 <div class="col-md-8 text-center ftco-animate">
                     <h2 class="mb-4">Thank you for your booking!</h2>
                     <p>Your booking has been successfully completed. We look forward to welcoming you.</p>
-                    <p><a href="../index.php" class="btn btn-primary py-3 px-4">Back to Home</a></p>
+                    <p>
+                        <a href="../index.php" class="btn btn-primary py-3 px-4">Back to Home</a>
+                        <a href="../reservation.php" class="btn btn-secondary py-3 px-4">View Booking</a>
+                    </p>
                 </div>
             </div>
         </div>

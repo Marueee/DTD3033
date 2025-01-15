@@ -13,16 +13,36 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 if (isset($_POST['update']) && isset($_POST['reservation_id'])) {
     try {
         // Validate inputs
-        if (!isset($_POST['customer_name'], $_POST['room_number'], $_POST['checkin_date'], $_POST['checkout_date'], $_POST['status'])) {
+        if (!isset($_POST['user_id'], $_POST['room_id'], $_POST['checkin_date'], $_POST['checkout_date'], $_POST['status'])) {
             throw new Exception("All fields are required");
         }
 
+        // Check if user_id exists
+        $stmt = $conn->prepare("SELECT user_id FROM users WHERE user_id = ?");
+        $stmt->bind_param("i", $_POST['user_id']);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows === 0) {
+            throw new Exception("Invalid user ID");
+        }
+        $stmt->close();
+
+        // Check if room_id exists
+        $stmt = $conn->prepare("SELECT room_id FROM rooms WHERE room_id = ?");
+        $stmt->bind_param("i", $_POST['room_id']);
+        $stmt->execute();
+        $stmt->store_result();
+        if ($stmt->num_rows === 0) {
+            throw new Exception("Invalid room ID");
+        }
+        $stmt->close();
+
         // Use prepared statement
-        $stmt = $conn->prepare("UPDATE reservations SET customer_name=?, room_number=?, checkin_date=?, checkout_date=?, reservation_status=? WHERE reservation_id=?");
+        $stmt = $conn->prepare("UPDATE reservations SET user_id=?, room_id=?, checkin_date=?, checkout_date=?, reservation_status=? WHERE reservation_id=?");
         $stmt->bind_param(
-            "sssssi",
-            $_POST['customer_name'],
-            $_POST['room_number'],
+            "iisssi",
+            $_POST['user_id'],
+            $_POST['room_id'],
             $_POST['checkin_date'],
             $_POST['checkout_date'],
             $_POST['status'],
@@ -37,7 +57,7 @@ if (isset($_POST['update']) && isset($_POST['reservation_id'])) {
 
 // Fetch all reservations using prepared statement
 try {
-    $query = "SELECT reservations.reservation_id, users.name AS customer_name, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.reservation_status AS status 
+    $query = "SELECT reservations.reservation_id, users.user_id, users.name AS customer_name, rooms.room_id, rooms.room_number, reservations.checkin_date, reservations.checkout_date, reservations.reservation_status AS status 
               FROM reservations 
               JOIN users ON reservations.user_id = users.user_id 
               JOIN rooms ON reservations.room_id = rooms.room_id 
@@ -232,7 +252,7 @@ try {
                 <tr>
                     <th>Reservation ID</th>
                     <th>Customer Name</th>
-                    <th>Room Number</th>
+                    <th>Room Number (ID)</th>
                     <th>Check-in Date</th>
                     <th>Check-out Date</th>
                     <th>Status</th>
@@ -247,7 +267,7 @@ try {
                         echo "<tr>";
                         echo "<td>" . $row['reservation_id'] . "</td>";
                         echo "<td>" . $row['customer_name'] . "</td>";
-                        echo "<td>" . $row['room_number'] . "</td>";
+                        echo "<td>" . $row['room_number'] . " (" . $row['room_id'] . ")</td>";
                         echo "<td>" . date('d M Y', strtotime($row['checkin_date'])) . "</td>";
                         echo "<td>" . date('d M Y', strtotime($row['checkout_date'])) . "</td>";
                         echo "<td><span class='status " . $statusClass . "'>" . $row['status'] . "</span></td>";
@@ -269,10 +289,8 @@ try {
             <h3>Edit Reservation</h3>
             <form id="editForm" method="POST">
                 <input type="hidden" name="reservation_id" id="edit_reservation_id">
-                <div class="form-group">
-                    <label>Customer Name</label>
-                    <input type="text" name="customer_name" id="edit_customer_name" required>
-                </div>
+                <input type="hidden" name="user_id" id="edit_user_id">
+                <input type="hidden" name="room_id" id="edit_room_id">
                 <div class="form-group">
                     <label>Room Number</label>
                     <input type="text" name="room_number" id="edit_room_number" required>
@@ -293,7 +311,7 @@ try {
                         <option value="cancelled">Cancelled</option>
                     </select>
                 </div>
-                <button type="submit" name="update" class="submit-btn">Update Reservation</button>
+                <button type="submit" name="update" class="submit-btn" onclick="updateRoomNumber()">Update Reservation</button>
                 <button type="button" onclick="closeModal()" class="submit-btn">Cancel</button>
             </form>
         </div>
@@ -309,12 +327,34 @@ try {
             fetch(`get_reservation.php?id=${reservationId}`)
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('edit_customer_name').value = data.customer_name;
+                    document.getElementById('edit_user_id').value = data.user_id;
+                    document.getElementById('edit_room_id').value = data.room_id;
                     document.getElementById('edit_room_number').value = data.room_number;
                     document.getElementById('edit_checkin_date').value = data.checkin_date;
                     document.getElementById('edit_checkout_date').value = data.checkout_date;
                     document.getElementById('edit_status').value = data.status;
                 });
+        }
+
+        function updateRoomNumber() {
+            const roomNumber = document.getElementById('edit_room_number').value;
+            const roomId = document.getElementById('edit_room_id').value;
+
+            fetch(`update_room.php`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ room_id: roomId, room_number: roomNumber })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Room number updated successfully');
+                } else {
+                    alert('Error updating room number');
+                }
+            });
         }
 
         function deleteReservation(reservationId) {

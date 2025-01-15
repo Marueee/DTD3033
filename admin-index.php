@@ -1,6 +1,6 @@
 <?php
 include 'head.php';
-include '../auth/db_config.php';
+include 'auth/db_config.php';
 
 // Check if user is logged in and has admin role
 session_start();
