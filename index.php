@@ -26,7 +26,6 @@
 	<div class="hero">
 		<section class="home-slider owl-carousel">
 			<div class="slider-item" style="background-image:url(images/bg_1.jpg);">
-				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center justify-content-end">
 						<div class="col-md-6 ftco-animate">
@@ -41,7 +40,6 @@
 			</div>
 
 			<div class="slider-item" style="background-image:url(images/bg_2.jpg);">
-				<div class="overlay"></div>
 				<div class="container">
 					<div class="row no-gutters slider-text align-items-center justify-content-end">
 						<div class="col-md-6 ftco-animate">
@@ -90,18 +88,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="col-md px-md-1 d-flex align-sel Searchf-stretch ftco-animate">
-					<div class="media block-6 services py-4 d-block text-center">
-						<div class="d-flex justify-content-center">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-car"></span>
-							</div>
-						</div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Transfer Services</h3>
-						</div>
-					</div>
-				</div> -->
 				<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
 					<div class="media block-6 services py-4 d-block text-center">
 						<div class="d-flex justify-content-center">
@@ -143,7 +129,7 @@
 						<h2 class="mb-4">La Passion Hotel the Most Recommended Hotel All Over the World</h2>
 					</div>
 					<p>La Passion Hotel combines elegance, comfort, and exceptional service to create an unforgettable stay for every guest. Nestled in a prime location, our hotel offers the perfect balance of tranquility and accessibility, making it an ideal destination for both leisure and business travelers.</p>
-					<p><a href="rooms.php" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
+					<p><a href="rooms/rooms.php" class="btn btn-secondary rounded">Reserve Your Room Now</a></p>
 				</div>
 			</div>
 		</div>
