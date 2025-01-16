@@ -141,6 +141,18 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 						</div>
 					</div>
 				</div>
+				<div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services py-4 d-block text-center">
+						<div class="d-flex justify-content-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-booking"></span>
+							</div>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3"><a href="manage-users.php"><span class="flaticon-booking"></span> Manage Users</a></h3>
+						</div>
+					</div>
+				</div>
 				<div class="col-md pl-md-1 d-flex align-self-stretch ftco-animate">
 					<div class="media block-6 services py-4 d-block text-center">
 						<div class="d-flex justify-content-center">

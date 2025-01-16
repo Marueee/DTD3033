@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $room_number = isset($_POST['room_number']) ? trim($_POST['room_number']) : '';
     $room_type = isset($_POST['room_type']) ? trim($_POST['room_type']) : '';
     $price = isset($_POST['price_per_night']) ? floatval($_POST['price_per_night']) : 0;
-    $status = isset($_POST['availability_status']) ? trim($_POST['availability_status']) : '';
+    $status = isset($_POST['status']) ? trim($_POST['status']) : '';
 
     // Validate required fields
     if (empty($room_number) || empty($room_type) || $price <= 0 || empty($status)) {
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     } else {
         try {
             // Prepare statement
-            $stmt = $conn->prepare("INSERT INTO rooms (room_number, room_type, price_per_night, availability_status) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO rooms (room_number, room_type, price_per_night, status) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("ssds", $room_number, $room_type, $price, $status);
             
             if ($stmt->execute()) {
@@ -148,8 +148,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             </div>
             
             <div class="form-group">
-                <label for="availability_status">Availability Status</label>
-                <select id="availability_status" name="availability_status" required>
+                <label for="status">Availability Status</label>
+                <select id="status" name="status" required>
                     <option value="">Select Status</option>
                     <option value="available">Available</option>
                     <option value="occupied">Occupied</option>
