@@ -140,7 +140,7 @@
 			</div>
 		</section>
 
-    <section class="testimony-section">
+    <!-- <section class="testimony-section">
 		<div class="container">
 			<div class="row no-gutters ftco-animate justify-content-center">
 				<div class="col-md-5 d-flex">
@@ -218,7 +218,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 		
 		<section class="instagram ftco-section ftco-no-pb">
       <div class="container-fluid">
